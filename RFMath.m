@@ -1,0 +1,138 @@
+#import "RFKit.h"
+#import "RFMath.h"
+#import <stdio.h>
+
+#pragma mark CGPoint
+CGPoint CGPointMid(CGPoint a, CGPoint b) {
+	return CGPointMake((a.x+b.x)/2, (a.y+b.y)/2);
+}
+float CGPointDistance(CGPoint a, CGPoint b) {
+	return (float)sqrt((a.x-b.x)*(a.x-b.x) + (a.y-b.y)*(a.y-b.y));
+}
+CGPoint CGPointAtLineRatio(CGPoint start, CGPoint end, CGFloat ratio) {
+	return CGPointMake(start.x + (end.x-start.x)*ratio, start.y + (end.y-start.y)*ratio);
+}
+CGPoint CGPointOfRectCenter(CGRect a) {
+	return CGPointMake(a.origin.x+a.size.width, a.origin.y+a.size.height);
+}
+
+
+#pragma mark CGSize
+CGSize CGSizeFromPoints(CGPoint start, CGPoint end) {
+	return CGSizeMake(end.x-start.x, end.y-start.y);
+}
+CGSize CGSizeScaled(CGSize original, float scale) {
+	return CGSizeMake(original.width*scale, original.height*scale);
+}
+
+
+#pragma mark CGRect
+CGRect CGRectMakeWithPoints(CGPoint a, CGPoint b) {
+    CGFloat x = MIN(a.x, b.x);
+    CGFloat y = MIN(a.y, b.y);
+    CGFloat width = fabsf(a.x-b.x);
+    CGFloat height = fabsf(a.y-b.y);
+    return CGRectMake(x, y, width, height);
+}
+
+CGRect CGRectResize(CGRect original, CGSize newSize, RFResizeAnchor resizeAnchor) {
+    CGFloat x = original.origin.x;
+    CGFloat y = original.origin.y;
+    CGFloat w = original.size.width;
+    CGFloat h = original.size.height;
+    
+    CGFloat wNew = newSize.width;
+    CGFloat hNew = newSize.height;
+    
+    switch (resizeAnchor) {
+        case RFResizeAnchorCenter:
+            x += (w - wNew)/2;
+            y += (h - hNew)/2;
+            break;
+        
+        case RFResizeAnchorTop:
+            x += (w - wNew)/2;
+            break;
+            
+        case RFResizeAnchorBottom:
+            x += (w - wNew)/2;
+            y += (h - hNew);
+            break;
+            
+        case RFResizeAnchorLeft:
+            y += (h - hNew)/2;
+            break;
+            
+        case RFResizeAnchorRight:
+            x += (w - wNew);
+            y += (h - hNew)/2;
+            break;
+            
+        case RFResizeAnchorTopLeft:
+            break;
+            
+        case RFResizeAnchorTopRight:
+            x += (w - wNew);
+            break;
+            
+        case RFResizeAnchorBottomLeft:
+            y += (h - hNew);
+            break;
+            
+        case RFResizeAnchorBottomRight:
+            x += (w - wNew);
+            y += (h - hNew);
+            break;
+            
+        default:
+            douts(@"Warning: CGRectResize >> Unknow RFResizeAnchor.")
+            return CGRectZero;
+            break;
+    }
+    return CGRectMake(x, y, wNew, hNew);
+}
+CGRect CGRectChange(CGRect original, RFCGRectChangeFlag flag, CGFloat newValue) {
+	CGRect rect = original;
+	switch (flag) {
+		case RFCGRectChangeX:
+			rect.origin.x = newValue;
+			break;
+			
+		case RFCGRectChangeY:
+			rect.origin.y = newValue;
+			break;
+		
+		case RFCGRectChangeWidth:
+			rect.size.width = newValue;
+			break;
+			
+		case RFCGRectChangeHeight:
+			rect.size.height = newValue;
+			break;
+	}
+	return rect;
+}
+
+bool CGRectIsOutOfRect(CGRect a, CGRect b) {
+	_dout_rect(a)
+	_dout_rect(b)
+	if (a.origin.x + a.size.width < b.origin.x ||
+		a.origin.x > b.origin.x + b.size.width ||
+		a.origin.y + a.size.height < b.origin.y ||
+		a.origin.y > b.origin.y + b.size.height) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+#pragma mark CGAngle
+CGAngle CGAngleFromPoints(CGPoint start, CGPoint end) {
+//	float t = atan2f(end.y-start.y, end.x-start.x);
+//	dout_float(CGAngleDegrees(t))
+	return atan2f(end.y-start.y, end.x-start.x);
+}
+float CGAngleDegrees(CGAngle a) {
+	return a/M_PI*180.f;
+}
