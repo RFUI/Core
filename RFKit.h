@@ -18,13 +18,7 @@
 #import "RFARC.h"
 #import "RFMath.h"
 
-#import "NSObject+RFKit.h"
-#import "NSString+RFKit.h"
-#import "NSDictionary+RFKit.h"
-#import "NSArray+RFKit.h"
-#import "UIColor+RFKit.h"
-#import "UIImage+RFKit.h"
-#import "UIView+RFKit.h"
+#import "RFKitDefaultExtensions.h"
 
 #pragma mark -
 
