@@ -1,4 +1,5 @@
 
+#import "RFKit.h"
 #import "NSArray+RFKit.h"
 
 @implementation NSArray (RFKit)

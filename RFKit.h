@@ -1,15 +1,16 @@
 /*!
-	RFKit
-	To be a usefull library for daily iOS develop.
+    RFKit
+    To be a usefull library for daily iOS develop.
  
-	https://github.com/BB9z/RFKit
+    Copyright (c) 2012 BB9z
+    http://github.com/bb9z/RFKit
  
-	The MIT License
-	http://www.opensource.org/licenses/mit-license.php
-*/
+    The MIT License (MIT)
+    http://www.opensource.org/licenses/mit-license.php
+ */
 
 #ifndef RFKit_h
-#define RFKit_h 0.1.0
+#define RFKit_h 0.2.0
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
@@ -35,7 +36,7 @@
 
 
 /** Get device's mac address
- 
+
  via: http://iphonedevelopertips.com/device/determine-mac-address.html
  
  @return mac address
