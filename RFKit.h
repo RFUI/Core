@@ -55,25 +55,6 @@
  */
 + (void)logMemoryInfo;
 
-
-/** Tradition object release helper
- 
-Before we write:
- 
-	［object1 release];
-	［object2 release];
-	［object3 release];
- 
-Now:
- 
-	［RFKit rls:object1, object2, object3, nil];
- 
- @param first at least one object
- @param ... other objects to realse
- */
-/// Deprecated
-+ (void)rls:(id)first,...;
-
 + (void)performBlock:(void (^)(id))block afterDelay:(NSTimeInterval)delay on:(id)object,...;
 
 

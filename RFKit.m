@@ -6,7 +6,7 @@
 #import <net/if_dl.h>
 #import <mach/mach.h>
 
-@interface RFKit (/* private */)
+@interface RFKit ()
 
 @end
 
@@ -41,14 +41,6 @@ static RFKit *sharedInstance = nil;
 	self.timeTable = nil;
 	
 	RF_DEALLOC_OBJ(super)
-}
-
-+ (void)rls:(id)first,... {
-	va_list ap;
-	va_start(ap, first);
-	for (id obj = first; obj != nil; obj = va_arg(ap, id))
-		RF_RELEASE_OBJ(obj)
-	va_end(ap);
 }
 
 + (void)performBlock:(void (^)(id))block afterDelay:(NSTimeInterval)delay on:(id)firstObject,... {
