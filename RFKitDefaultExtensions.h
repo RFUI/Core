@@ -13,8 +13,11 @@
 #define RFKitDefaultExtensions_h
 
 #import "NSArray+RFKit.h"
+#import "NSBundle+RFKit.h"
 //#import "NSDate+RFKit.h"
+//#import "NSDateFormatter+RFKit.h"
 #import "NSDictionary+RFKit.h"
+//#import "NSFileManager+RFKit.h"
 #import "NSObject+RFKit.h"
 #import "NSString+RFKit.h"
 //#import "NSURL+RFKit.h"
@@ -23,5 +26,6 @@
 #import "UIColor+RFKit.h"
 #import "UIImage+RFKit.h"
 #import "UIView+RFKit.h"
+#import "UIViewController+RFKit.h"
 
 #endif

@@ -74,48 +74,6 @@
 - (float)timeBetween:(NSString *)name1 another:(NSString *)name2;
 @end
 
-
-#pragma mark NSDateFormatter 扩展
-@interface NSDateFormatter (extension)
-/** 符合GMT格式的NSDateFormatter
- 
- 日期格式为 yyyy-MM-ddT HH:mm:ssZ
- @return GMTFormatter
- */
-+ (NSDateFormatter *)GMTFormatter;
-
-+ (NSDateFormatter *)currentLocaleFormatter;
-+ (NSDateFormatter *)currentLocaleFormatterOnlyDate;
-
-@end
-
-#pragma mark UIViewController 扩展
-@interface UIViewController (extension)
-- (void)setNavTitle:(NSString *)title back:(NSString *)backTitle;
-@end
-
-
-#pragma mark NSFileManager 扩展
-@interface NSFileManager (extension)
-- (NSArray *)subDirectoryOfDirectoryAtPath:(NSString *)path error:(NSError **)erro;
-@end
-
-#pragma mark NSBundle 扩展
-@interface NSBundle (extension)
-+ (NSString *)mainBundlePathForCaches;
-+ (NSString *)mainBundlePathForPreferences;
-+ (NSString *)mainBundlePathForDocuments;
-+ (NSString *)mainBundlePathForTemp;
-+ (NSString *)pathForMainBoundlePath:(NSString *)path;
-@end
-
-#pragma mark UIButton
-@interface UIButton (RFKit)
-
-- (void)setResourceImage:(NSString *)imageName background:(NSString *)backGroundImageName;
-
-@end
-
 // compiler sets __ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__ when -miphoneos-version-min is used
 //#define __ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__ __IPHONE_4_3
 //

@@ -1,4 +1,6 @@
+
 #import "RFKit.h"
+#import "UIButton+RFKit.h"
 
 @implementation UIButton (RFKit)
 
