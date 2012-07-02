@@ -18,10 +18,12 @@
 //#import "NSDateFormatter+RFKit.h"
 #import "NSDictionary+RFKit.h"
 //#import "NSFileManager+RFKit.h"
+//#import "NSNumberFormatter+RFKit.h"
 #import "NSObject+RFKit.h"
 #import "NSString+RFKit.h"
 //#import "NSURL+RFKit.h"
 
+//#import "UIAlertView+RFKit.h"
 //#import "UIButton+RFKit.h"
 #import "UIColor+RFKit.h"
 #import "UIImage+RFKit.h"
