@@ -7,6 +7,20 @@
 - (id)objectForKey:(id)aKey defaultMarker:(id)anObject {
 	return [self get:[self objectForKey:aKey] defaults:anObject];
 }
+
+- (BOOL)boolForKey:(NSString *)keyName {
+    return [[self objectForKey:keyName] boolValue];
+}
+- (float)floatForKey:(NSString *)keyName {
+    return [[self objectForKey:keyName] floatValue];
+}
+- (NSInteger)integerForKey:(NSString *)keyName {
+    return [[self objectForKey:keyName] integerValue];
+}
+- (double)doubleForKey:(NSString *)keyName {
+    return [[self objectForKey:keyName] doubleValue];
+}
+
 @end
 
 @implementation NSMutableDictionary (RFKit)
@@ -24,6 +38,19 @@
     }
     va_end(ap);
     return keyCopedCount;
+}
+
+- (void)setBool:(BOOL)value forKey:(NSString *)keyName {
+    [self setObject:[NSNumber numberWithBool:value] forKey:keyName];
+}
+- (void)setFloat:(float)value forKey:(NSString *)keyName {
+    [self setObject:[NSNumber numberWithFloat:value] forKey:keyName];
+}
+- (void)setInteger:(NSInteger)value forKey:(NSString *)keyName {
+    [self setObject:[NSNumber numberWithInteger:value] forKey:keyName];
+}
+- (void)setDouble:(double)value forKey:(NSString *)keyName {
+    [self setObject:[NSNumber numberWithDouble:value] forKey:keyName];
 }
 
 @end
