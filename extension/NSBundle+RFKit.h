@@ -18,4 +18,9 @@
 + (NSString *)mainBundlePathForTemp;
 + (NSString *)pathForMainBoundlePath:(NSString *)path;
 
+/**
+    Bundle version string, according to Info.plist file.
+    CFBundleShortVersionString + CFBundleVersion
+ */
++ (NSString *)versionString;
 @end

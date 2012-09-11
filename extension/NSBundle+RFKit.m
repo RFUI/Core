@@ -23,4 +23,8 @@
     return [NSHomeDirectory() stringByAppendingPathComponent:path];
 }
 
++ (NSString *)versionString {
+    NSDictionary *info = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Info" ofType:@"plist"]];
+    return [NSString stringWithFormat:@"%@.%@", [info objectForKey:@"CFBundleShortVersionString"], [info objectForKey:@"CFBundleVersion"]];
+}
 @end
