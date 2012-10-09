@@ -12,6 +12,8 @@
 #ifndef RFKit_RFARC_h_
 #define RFKit_RFARC_h_
 
+#include "/usr/include/os/object.h"
+
 #pragma mark -
 #pragma mark ARC Compatible Macro
 
@@ -63,5 +65,22 @@
     #define RF_IF_NO_ARC_END }
 #endif
 
+#pragma mark - GCD
+
+#ifndef RF_dispatch_retain
+    #if OS_OBJECT_USE_OBJC
+        #define RF_dispatch_retain(expr)
+    #else
+        #define RF_dispatch_retain(expr) dispatch_retain(expr)
+    #endif
+#endif
+
+#ifndef RF_dispatch_release
+    #if OS_OBJECT_USE_OBJC
+        #define RF_dispatch_release(expr)
+    #else
+        #define RF_dispatch_release(expr) dispatch_release(expr)
+    #endif
+#endif
 
 #endif
