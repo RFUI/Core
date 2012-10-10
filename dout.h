@@ -117,7 +117,7 @@
         dout(@"%s = %i", #intVar, (int)intVar)
 
 	#define dout_float(floatVar)\
-        dout(@"%s = %f", #floatVar, (float)floatVar))
+        dout(@"%s = %f", #floatVar, (float)floatVar)
 
 	#define dout_point(point_struct_with_x_y)\
         dout(@"%s = {%f, %f}", #point_struct_with_x_y, (float)point_struct_with_x_y.x, (float)point_struct_with_x_y.y)
