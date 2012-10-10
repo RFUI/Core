@@ -1,19 +1,20 @@
 /*!
-	RFUI
+    RFUI
  
-	https://github.com/BB9z/RFUI
+    Copyright (c) 2012 BB9z
+    http://github.com/bb9z/RFUICore
  
-	The MIT License
-	http://www.opensource.org/licenses/mit-license.php
-*/
-
-#import "RFMath.h"
+    The MIT License (MIT)
+    http://www.opensource.org/licenses/mit-license.php
+ */
 
 #ifndef RFUI_h
 #define RFUI_h
 
+#import "RFKit.h"
+
 #ifndef RFKit_h
-#error \
+    #error \
     RFKit not found, \
     To use RFUI you must add RFKit to your project first. \
     For more infomation about RFKit, viste: https://github.com/BB9z/RFKit
