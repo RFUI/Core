@@ -2,7 +2,7 @@
 	Debug output kit(dout)
 	RFKit
 
-	ver 1.1.0
+	ver 1.1.1
  
     Copyright (c) 2012 BB9z
     http://github.com/bb9z/RFKit
@@ -14,8 +14,7 @@
 #ifndef _DOUT_H_
 #define _DOUT_H_
 
-#import <Foundation/NSObjCRuntime.h>
-#import <Foundation/NSException.h>
+#import <Foundation/Foundation.h>
 
 #pragma mark - Config
 
@@ -92,7 +91,7 @@
  */
 #ifndef DOUT_TRACE_FORMATTER
 #	if DOUT_FALG_TRACE
-#		define DOUT_TRACE_FORMATTER [NSString stringWithFormat:@"%@:%d >> ",[[NSString stringWithUTF8String:__FILE__] lastPathComponent],__LINE__]
+#		define DOUT_TRACE_FORMATTER [NSString stringWithFormat:@"%@:%d >> ", [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__]
 #	else
 #		define DOUT_TRACE_FORMATTER @""
 #	endif
@@ -102,40 +101,40 @@
 /// main
 #if DOUT_LOG_ENABLE
 	#define dout(format,...)\
-		if(DOUT_LOG_ENABLE) NSLog([DOUT_TRACE_FORMATTER stringByAppendingFormat:format, ##__VA_ARGS__]);
+		{if(DOUT_LOG_ENABLE) NSLog([DOUT_TRACE_FORMATTER stringByAppendingFormat:format, ##__VA_ARGS__]);}
+
+    #define douts(NSString)\
+        {if(DOUT_LOG_ENABLE) NSLog([DOUT_TRACE_FORMATTER stringByAppendingString:NSString]);}
 
 	#define douto(NSObject)\
-        dout(@"%s = <%@> %@", #NSObject, [(NSObject) class], NSObject)
-
+        {if(DOUT_LOG_ENABLE) NSLog(@"%@%s = <%@> %@", DOUT_TRACE_FORMATTER, #NSObject, [NSObject class], NSObject);}
+    
     #define doutp(pointer)\
-        dout(@"%s -> %p", #pointer, pointer)
+        {if(DOUT_LOG_ENABLE) NSLog(@"%@%s -> %p", DOUT_TRACE_FORMATTER, #pointer, pointer);}
 
 	#define dout_bool(boolVar)\
-        dout(@"%s = %@", #boolVar, boolVar?@"YES":@"NO")
+        {if(DOUT_LOG_ENABLE) NSLog(@"%@%s = %@", DOUT_TRACE_FORMATTER, #boolVar, boolVar?@"YES":@"NO");}
 
     #define dout_int(intVar)\
-        dout(@"%s = %i", #intVar, (int)intVar)
+        {if(DOUT_LOG_ENABLE) NSLog(@"%@%s = %i", DOUT_TRACE_FORMATTER, #intVar, (int)intVar);}
 
 	#define dout_float(floatVar)\
-        dout(@"%s = %f", #floatVar, (float)floatVar)
+        {if(DOUT_LOG_ENABLE) NSLog(@"%@%s = %f", DOUT_TRACE_FORMATTER, #floatVar, (float)floatVar);}
 
 	#define dout_point(point_struct_with_x_y)\
-        dout(@"%s = {%f, %f}", #point_struct_with_x_y, (float)point_struct_with_x_y.x, (float)point_struct_with_x_y.y)
+        {if(DOUT_LOG_ENABLE) NSLog(@"%@%s = {%f, %f}", DOUT_TRACE_FORMATTER, #point_struct_with_x_y, (float)point_struct_with_x_y.x, (float)point_struct_with_x_y.y);}
 
 	#define dout_size(size_struct_with_width_height)\
-        dout(@"%s = {%f, %f}", #size_struct_with_width_height, (float)size_struct_with_width_height.width, size_struct_with_width_height.height)
+        {if(DOUT_LOG_ENABLE) NSLog(@"%@%s = {%f, %f}", DOUT_TRACE_FORMATTER, #size_struct_with_width_height, (float)size_struct_with_width_height.width, (float)size_struct_with_width_height.height);}
 
 	#define dout_rect(CGRect)\
-        dout(@"%s = {%f, %f,%f, %f}", #CGRect, CGRect.origin.x, CGRect.origin.y, CGRect.size.width, CGRect.size.height)
-
-	#define douts(NSString)\
-        dout(@"%@", NSString)
+        {if(DOUT_LOG_ENABLE) NSLog(@"%@%s = {%f, %f, %f, %f}", DOUT_TRACE_FORMATTER, #CGRect, CGRect.origin.x, CGRect.origin.y, CGRect.size.width, CGRect.size.height);}
 
 	#define doutwork()\
-        dout(@"%s: It Works!", __FUNCTION__)
+        {if(DOUT_LOG_ENABLE) NSLog(@"%@%s: It Works!", DOUT_TRACE_FORMATTER, __FUNCTION__);}
 
 	#define douttrace()\
-        dout(@"%s @%@", __PRETTY_FUNCTION__, [NSThread callStackSymbols])
+        {if(DOUT_LOG_ENABLE) NSLog(@"%@%s @%@", DOUT_TRACE_FORMATTER, __PRETTY_FUNCTION__, [NSThread callStackSymbols]);}
 
 #else
 	#define dout(...)
