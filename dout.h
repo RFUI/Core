@@ -102,7 +102,7 @@
 /// main
 #if DOUT_LOG_ENABLE
 	#define dout(format,...)\
-		if(DOUT_LOG_ENABLE){NSLog([DOUT_TRACE_FORMATTER stringByAppendingFormat:format, ##__VA_ARGS__]);}
+		if(DOUT_LOG_ENABLE) NSLog([DOUT_TRACE_FORMATTER stringByAppendingFormat:format, ##__VA_ARGS__]);
 
 	#define douto(NSObject)\
         dout(@"%s = <%@> %@", #NSObject, [(NSObject) class], NSObject)
