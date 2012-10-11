@@ -12,8 +12,6 @@
 #ifndef RFKit_RFARC_h_
 #define RFKit_RFARC_h_
 
-#include "/usr/include/os/object.h"
-
 #pragma mark -
 #pragma mark ARC Compatible Macro
 
