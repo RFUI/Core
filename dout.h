@@ -137,19 +137,19 @@
         {if(DOUT_LOG_ENABLE) NSLog(@"%@%s @%@", DOUT_TRACE_FORMATTER, __PRETTY_FUNCTION__, [NSThread callStackSymbols]);}
 
 #else
-	#define dout(...)
-	#define douts(...)
-	#define douto(...)
-    #define doutp(...)
-	#define dout_bool(...)
-    #define dout_int(...)
-	#define dout_float(...)
-	#define dout_point(...)
-	#define dout_size(...)
-	#define dout_rect(...)
-	#define doutf(...)
-	#define doutwork(...)
-	#define douttrace(...)
+	#define dout(...)   ;
+	#define douts(...)  ;
+	#define douto(...)  ;
+    #define doutp(...)  ;
+	#define dout_bool(...)  ;
+    #define dout_int(...)   ;
+	#define dout_float(...) ;
+	#define dout_point(...) ;
+	#define dout_size(...)  ;
+	#define dout_rect(...)  ;
+	#define doutf(...)  ;
+	#define doutwork(...)   ;
+	#define douttrace(...)  ;
 
 #endif
 
