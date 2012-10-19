@@ -136,6 +136,9 @@
 	#define douttrace()\
         {if(DOUT_LOG_ENABLE) NSLog(@"%@%s @%@", DOUT_TRACE_FORMATTER, __PRETTY_FUNCTION__, [NSThread callStackSymbols]);}
 
+    #define doutline()\
+        {if(DOUT_LOG_ENABLE) NSLog(@"%@%s line:%d", DOUT_TRACE_FORMATTER, __PRETTY_FUNCTION__, __LINE__);}
+
 #else
 	#define dout(...)   ;
 	#define douts(...)  ;
@@ -150,6 +153,7 @@
 	#define doutf(...)  ;
 	#define doutwork(...)   ;
 	#define douttrace(...)  ;
+    #define doutline(...)   ;
 
 #endif
 
@@ -246,6 +250,7 @@
 #define _doutf(...)
 #define _doutwork(...)
 #define _douttrace(...)
+#define _doutline(...)
 
 #define _dout_info(...)
 #define _dout_warning(...)
