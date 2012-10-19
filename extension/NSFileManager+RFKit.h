@@ -14,4 +14,7 @@
 @interface NSFileManager (RFKit)
 - (NSArray *)subDirectoryOfDirectoryAtPath:(NSString *)path error:(NSError **)erro;
 
+- (unsigned long long)fileSizeForPath:(NSString *)path;
+
+
 @end
