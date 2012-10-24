@@ -34,6 +34,10 @@
  */
 + (RFKit *)sharedKit;
 
+/** Returns if the device has a retina screen.
+ */
++ (BOOL)isRetinaDisplay;
+
 
 /** Get device's mac address
 

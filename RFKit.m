@@ -14,8 +14,8 @@
 @implementation RFKit
 @synthesize timeTable;
 
-static RFKit *sharedInstance = nil;
 + (RFKit *)sharedKit {
+    static RFKit *sharedInstance = nil;
 	if (sharedInstance == nil) {
 		@synchronized(sharedInstance) {
 			if (sharedInstance == nil) {
@@ -35,6 +35,18 @@ static RFKit *sharedInstance = nil;
 		timeBase = clock();
 	}
 	return self;
+}
+
++ (BOOL)isRetinaDisplay {
+    static BOOL isRetinaDisplay = NO;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        if ([[UIScreen mainScreen] respondsToSelector:@selector(displayLinkWithTarget:selector:)]
+            && [UIScreen mainScreen].scale == 2.0) {
+            isRetinaDisplay = YES;
+        }
+    });
+    return isRetinaDisplay;
 }
 
 - (void)dealloc {
