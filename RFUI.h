@@ -12,6 +12,7 @@
 #define RFUI_h
 
 #import "RFKit.h"
+#import "RFUIInterfaceOrientationSupport.h"
 
 #ifndef RFKit_h
     #error \
