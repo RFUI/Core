@@ -76,4 +76,18 @@
         return UIInterfaceOrientationMaskLandscape;\
     }
 
+// All
+#define RFUIInterfaceOrientationSupportAll \
+    - (BOOL)shouldAutorotate {\
+        return YES;\
+    }\
+    \
+    - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {\
+        return YES;\
+    }\
+    \
+    - (NSUInteger)supportedInterfaceOrientations {\
+        return UIInterfaceOrientationMaskAll;\
+    }
+
 #endif
