@@ -8,9 +8,10 @@
     http://www.opensource.org/licenses/mit-license.php
  */
 
-#ifndef RFUI_h
-#define RFUI_h
+#ifndef _RFUI_h
+#define _RFUI_h
 
+#import "RFUIDebug.h"
 #import "RFKit.h"
 #import "RFUIInterfaceOrientationSupport.h"
 

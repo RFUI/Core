@@ -22,4 +22,6 @@
 + (UIColor *)colorWithRGBString:(NSString *)nsstring alpha:(CGFloat)alpha;
 
 + (UIColor *)colorWithPatternImageName:(NSString *)resourceName;
+
++ (UIColor *)randColorWithAlpha:(CGFloat)alpha;
 @end
