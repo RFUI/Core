@@ -116,10 +116,10 @@
         {if(DOUT_LOG_ENABLE) NSLog(@"%@%s = %@", DOUT_TRACE_FORMATTER, #boolVar, boolVar?@"YES":@"NO");}
 
     #define dout_int(intVar)\
-        {if(DOUT_LOG_ENABLE) NSLog(@"%@%s = %i", DOUT_TRACE_FORMATTER, #intVar, (int)intVar);}
+        {if(DOUT_LOG_ENABLE) NSLog(@"%@%s = %i", DOUT_TRACE_FORMATTER, #intVar, (int)(intVar));}
 
 	#define dout_float(floatVar)\
-        {if(DOUT_LOG_ENABLE) NSLog(@"%@%s = %f", DOUT_TRACE_FORMATTER, #floatVar, (float)floatVar);}
+        {if(DOUT_LOG_ENABLE) NSLog(@"%@%s = %f", DOUT_TRACE_FORMATTER, #floatVar, (float)(floatVar));}
 
 	#define dout_point(point_struct_with_x_y)\
         {if(DOUT_LOG_ENABLE) NSLog(@"%@%s = {%f, %f}", DOUT_TRACE_FORMATTER, #point_struct_with_x_y, (float)point_struct_with_x_y.x, (float)point_struct_with_x_y.y);}
