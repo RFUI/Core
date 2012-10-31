@@ -58,7 +58,7 @@
             return UIInterfaceOrientationMaskPortrait;\
         }\
         else {\
-            return UIInterfaceOrientationMaskPortrait || UIInterfaceOrientationMaskPortraitUpsideDown;\
+            return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown;\
         }\
     }
 
