@@ -15,6 +15,7 @@ dout为调试打印而生，它包含了一套方便打印工具。
 int a = 10;
 dout_int(101+a)	// Output: 101+a = 111
 ```
+
 * 支持打印语句本身的跟踪，开启 `DOUT_FALG_TRACE` 以激活。 
 * 专用于警告、错误输出的语句，可配置为抛出异常或断言失败。
 * 因为是宏，当禁用时通常不会有性能损失。
@@ -40,6 +41,6 @@ dout_int(101+a)	// Output: 101+a = 111
 其他外部组件
   UncaughtExceptionHandler，一般用于内部测试
 
-```Objective-C
+```
 InstallUncaughtExceptionHandler();
 ```
