@@ -168,11 +168,11 @@
 
 #ifndef dout_warning
     #if RFDebugLevel >= 3
-        #if DOUT_ASSERT_AT_ERROR
+        #if DOUT_ASSERT_AT_WANRNING
             #define dout_warning(format, ...)\
                 NSAssert(false, format, ##__VA_ARGS__);
 
-        #elif DOUT_TREAT_ERROR_AS_EXCEPTION
+        #elif DOUT_TREAT_WANRNING_AS_EXCEPTION
             #define dout_warning(format, ...)\
                 @throw [NSException exceptionWithName:@"DOUT Warning" reason:[NSString stringWithFormat:format, ##__VA_ARGS__] userInfo:nil];
 
