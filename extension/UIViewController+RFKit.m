@@ -11,4 +11,19 @@
 	RF_RELEASE_OBJ(tmpBack);
 }
 
+- (void)addChildViewController:(UIViewController *)childController intoView:(UIView *)subview {
+    [self addChildViewController:childController];
+    if (subview) {
+        [subview addSubview:childController.view];
+    }
+    else {
+        [self.view addSubview:childController.view];
+    }
+}
+
+- (void)removeFromParentViewControllerAndView {
+    [self.view removeFromSuperview];
+    [self removeFromParentViewController];
+}
+
 @end

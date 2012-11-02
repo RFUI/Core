@@ -15,4 +15,7 @@
 @interface UIViewController (RFKit)
 - (void)setNavTitle:(NSString *)title back:(NSString *)backTitle;
 
+- (void)addChildViewController:(UIViewController *)childController intoView:(UIView *)subview;
+
+- (void)removeFromParentViewControllerAndView;
 @end
