@@ -11,11 +11,11 @@
 #ifndef _RFUI_h
 #define _RFUI_h
 
-#import "RFUIDebug.h"
 #import "RFKit.h"
+#import "RFUIDebug.h"
 #import "RFUIInterfaceOrientationSupport.h"
 
-#ifndef RFKit_h
+#ifndef _RFKit_h
     #error \
     RFKit not found, \
     To use RFUI you must add RFKit to your project first. \
