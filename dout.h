@@ -24,7 +24,7 @@
     5   Info
     4   
     3   Show warning.
-    2   Debug, show error. DOUT_LOG_ENABLE on.
+    2   Debug mode, show error. DOUT_LOG_ENABLE on. Assert enable.
     1   Default, DOUT_LOG_ENABLE off. For production environment.
     0   Silent.
  */
@@ -206,6 +206,28 @@
     #endif
 #endif
 
+#pragma mark Assert
+/*!
+    Refrence: http://www.cimgf.com/2010/05/02/my-current-prefix-pch-file
+    Thanks to Marcus Zarra.
+ */
+
+#ifndef ALog
+#   if DEBUG
+#       define ALog(...)\
+            [[NSAssertionHandler currentHandler] handleFailureInFunction:[NSString stringWithCString:__PRETTY_FUNCTION__ encoding:NSUTF8StringEncoding] file:[NSString stringWithCString:__FILE__ encoding:NSUTF8StringEncoding] lineNumber:__LINE__ description:__VA_ARGS__];
+#   else
+#       define ALog(...)\
+            NSLog(@"%s %@", __PRETTY_FUNCTION__, [NSString stringWithFormat:__VA_ARGS__]);
+#   endif
+#endif
+
+#ifndef RFAssert
+#   define RFAssert(condition, ...)\
+        if (!(condition)) {\
+            ALog(__VA_ARGS__)\
+        }
+#endif
 
 #pragma mark Segment
 
