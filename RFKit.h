@@ -34,19 +34,6 @@
  */
 + (RFKit *)sharedKit;
 
-/** Returns if the device has a retina screen.
- */
-+ (BOOL)isRetinaDisplay;
-
-
-/** Get device's mac address
-
- via: http://iphonedevelopertips.com/device/determine-mac-address.html
- 
- @return mac address
- */
-+ (NSString *)getMacAddress;
-
 
 /** Print menory usage details
  
