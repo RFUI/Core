@@ -18,4 +18,6 @@
 - (void)addChildViewController:(UIViewController *)childController intoView:(UIView *)subview;
 
 - (void)removeFromParentViewControllerAndView;
+
+- (void)dismissKeyboard;
 @end

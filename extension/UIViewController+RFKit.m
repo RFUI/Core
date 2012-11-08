@@ -26,4 +26,9 @@
     [self removeFromParentViewController];
 }
 
+//! via: http://lldong.github.com/blog/2012/11/02/dissmiss-keyboard/
+- (void)dismissKeyboard {    
+    [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
+}
+
 @end
