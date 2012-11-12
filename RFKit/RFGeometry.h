@@ -9,10 +9,10 @@
     http://www.opensource.org/licenses/mit-license.php
  */
 
-#import <UIKit/UIKit.h>
+#import "RFRuntime.h"
 
-#ifndef _RFKit_RFMath_h_
-#define _RFKit_RFMath_h_
+#ifndef _RFKit_RFGeometry_h_
+#define _RFKit_RFGeometry_h_
 
 typedef enum {
 	RFResizeAnchorCenter = 0,
