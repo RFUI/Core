@@ -11,12 +11,11 @@
 
 
 
-#ifndef RFKit_RFMath_h
-#define RFKit_RFMath_h
-
 #ifndef RFMathNotChange
 #   define RFMathNotChange CGFLOAT_MAX
 #endif
+#ifndef _RFKit_RFMath_h_
+#define _RFKit_RFMath_h_
 
 typedef enum {
 	RFResizeAnchorCenter = 0,

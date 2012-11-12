@@ -9,11 +9,11 @@
     http://www.opensource.org/licenses/mit-license.php
  */
 
-#ifndef _RFKit_h
-#define _RFKit_h 0.2.0
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
+#ifndef _RFKit_h_
+#define _RFKit_h_ 0.2.0
 
 #import "dout.h"
 #import "RFARC.h"
