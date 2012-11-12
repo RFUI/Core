@@ -22,8 +22,13 @@
 }
 
 - (void)removeFromParentViewControllerAndView {
-    [self.view removeFromSuperview];
-    [self removeFromParentViewController];
+    if (self.view.superview) {
+        [self.view removeFromSuperview];
+    }
+    
+    if (self.parentViewController) {
+        [self removeFromParentViewController];
+    }
 }
 
 //! via: http://lldong.github.com/blog/2012/11/02/dissmiss-keyboard/
