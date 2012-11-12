@@ -1,6 +1,7 @@
 /*!
-    RFMath
-    Math and Graphics helper for RFKit
+    RFGeometry
+    RFKit
+    Math and Graphics helper
  
     Copyright (c) 2012 BB9z
     http://github.com/bb9z/RFKit
@@ -49,6 +50,7 @@ CGPoint CGPointOfRectCenter(CGRect a);
 CGSize	CGSizeFromPoints(CGPoint a, CGPoint b);
 CGSize	CGSizeScaled	(CGSize original, float scale);
 
+
 #pragma mark CGRect
 typedef enum {
 	RFCGRectChangeX = 0,
@@ -76,6 +78,4 @@ CGAngle	CGAngleFromPoints(CGPoint start, CGPoint end);
 float	CGAngleDegrees	(CGAngle a);
 
 
-
 #endif
-

@@ -1,6 +1,6 @@
 /*!
     RFKit
-    To be a usefull library for daily iOS develop.
+    Tool kit for daily iOS development.
  
     Copyright (c) 2012 BB9z
     http://github.com/bb9z/RFKit
@@ -15,10 +15,9 @@
 #import "RFRuntime.h"
 #import "dout.h"
 
-#import "RFMath.h"
+#import "RFGeometry.h"
 
-#import "RFKitDefaultExtensions.h"
+#import "RFKitDefaultCategories.h"
 
 //#import "RFPerformance.h"
-
 #endif
