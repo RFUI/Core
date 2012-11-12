@@ -97,4 +97,18 @@
 	return macAddressString;
 }
 
++ (long long)fileSystemFreeSize {
+    NSError *e = nil;
+    NSDictionary *info = [[NSFileManager defaultManager] attributesOfFileSystemForPath:NSHomeDirectory() error:&e];
+    if (e) dout_warning(@"Can`t get file system free size, reason: %@", e);
+    return [info[NSFileSystemFreeSize] longLongValue];
+}
+
++ (long long)fileSystemSize {
+    NSError *e = nil;
+    NSDictionary *info = [[NSFileManager defaultManager] attributesOfFileSystemForPath:NSHomeDirectory() error:&e];
+    if (e) dout_warning(@"Can`t get file system size, reason: %@", e);
+    return [info[NSFileSystemSize] longLongValue];
+}
+
 @end

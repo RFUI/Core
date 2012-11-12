@@ -23,12 +23,12 @@
 + (BOOL)isRetinaDisplay;
 
 
-/** Get device's mac address
- 
- via: http://iphonedevelopertips.com/device/determine-mac-address.html
- 
- @return mac address
- */
+/// Get device's mac address
+//! via: http://iphonedevelopertips.com/device/determine-mac-address.html
 + (NSString *)macAddress;
+
+
++ (long long)fileSystemFreeSize;
++ (long long)fileSystemSize;
 
 @end
