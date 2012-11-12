@@ -9,11 +9,8 @@
     http://www.opensource.org/licenses/mit-license.php
  */
 
+#import <UIKit/UIKit.h>
 
-
-#ifndef RFMathNotChange
-#   define RFMathNotChange CGFLOAT_MAX
-#endif
 #ifndef _RFKit_RFMath_h_
 #define _RFKit_RFMath_h_
 
