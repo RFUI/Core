@@ -1,6 +1,9 @@
-组件介绍
------------
-### dout
+RFKit Document
+=================
+RFKit 包含一套对日常iOS开发很有帮助的工具。
+
+dout
+------
 dout为调试打印而生，它包含了一套方便打印工具。
 
 特色：
@@ -20,26 +23,34 @@ dout_int(101+a)	// Output: 101+a = 111
 
 详见：[dout 文档](doc/dout.md)
 
-### RFARC
+
+UIKit & Foundation Categories 
+-------------
+UIKit 和 Foundation 的扩展是 RFKit 的重要组成部分，包含了很多实用方法。
+
+`RFKitDefaultCategories.h` 定义了默认包含的扩展。
+
+每个扩展的具体功能见头文件。
 
 
-### RFKit.h
+RFRuntime
+-------------
+处理编译/运行时差异，为上层组件提供统一、简单的界面。
 
-### RFKitDefaultExtensions
+其中，RFARC专用于处理ARC的兼容，借助 `RF_STRONG`、`RF_WEAK` 等宏可以写出同时兼容ARC和非ARC环境的代码。iOS6后，ARC增加了对GCD的支持，随之又增加了 `RF_dispatch_retain` 和 `RF_dispatch_release`。
 
-### RFMath.h
+RFRuntime 默认包括了 UIKit 和 Foundation 头文件。
 
-### RFUI.h
 
-### extension
-这里包含UIKit和Foundation的类扩展，一是为简化代码，二是给这些类附加上常用的功能。
+RFGeometry
+-------------
+为 `CGPoint`、`CGSize`、`CGRect` 等几何结构增加了新的方法，增加了新的 `CGAngle` 角度结构。
 
-具体需看扩展头文件。
+`RFResizeAnchor` 和 `RFAlignmentAnchor` 为尺寸调整、对齐提供参考基准。  
 
-### external,
-其他外部组件
-  UncaughtExceptionHandler，一般用于内部测试
 
-```
-InstallUncaughtExceptionHandler();
-```
+其他
+-------------
+external 文件夹下存放其他外部组件。
+
+UncaughtExceptionHandler，一般用于内部测试，调用 `InstallUncaughtExceptionHandler()` 激活后，可以捕获到应用运行时的错误，帮助在非调试环境确定问题所在。
