@@ -1,7 +1,7 @@
 
 #import "RFKit.h"
 #import "UIDevice+RFKit.h"
-//#import <sys/socket.h>
+#import <sys/socket.h>
 #import <sys/sysctl.h>
 #import <net/if.h>
 #import <net/if_dl.h>
