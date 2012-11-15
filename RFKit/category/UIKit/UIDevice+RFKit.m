@@ -72,7 +72,7 @@
 	// Befor going any further...
 	if (errorFlag != NULL)
 	{
-		NSLog(@"Error: %@", errorFlag);
+        dout_error(@"Error: %@", errorFlag)
 		return errorFlag;
 	}
 	
