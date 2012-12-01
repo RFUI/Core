@@ -16,31 +16,4 @@
     #define RFUIDebugEnableRandomBackgroundColor 0
 #endif
 
-#ifndef RFUILogAtDelloc
-    #define RFUILogAtDelloc 0
-#endif
-
-#ifndef RFUIDellocLog
-    #if RFUILogAtDelloc
-        #define RFUIDellocLog() doutwork()
-    #else
-        #define RFUIDellocLog()
-    #endif
-#else
-    #warning "RFUIDellocLog was defined somewhere"
-#endif
-
-#ifndef RFUIDelloc
-    #if RFUILogAtDelloc
-        #define RFUIDelloc \
-            - (void)dealloc {\
-                doutwork();\
-            }
-    #else
-        #define RFUIDelloc
-    #endif
-#else
-    #warning "RFUIDelloc was defined somewhere"
-#endif
-
 #endif
