@@ -1,0 +1,25 @@
+/*!
+    RFFeatureSupportProxyDelegates
+    RFUI
+
+    Copyright (c) 2012-2013 BB9z
+    http://github.com/bb9z/RFUICore
+
+    The MIT License (MIT)
+    http://www.opensource.org/licenses/mit-license.php
+ */
+
+/// These protocols are not real protocol, just a way to declare a class suport something or not.
+
+
+// For RFUI components, storyboard was first class supported.
+// This protocol show a class not support init form nib. You must use init method to creat one.
+#define RFNotSupportLoadFromNib             NSObject
+
+// All property support key value observing.
+#define RFSupportKeyValueObserving          NSObject
+
+#define RFSupportIOS4_3                     NSObject
+#define RFSupportIOS5_0                     NSObject
+#define RFSupportIOS6_0                     NSObject
+
