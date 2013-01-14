@@ -2,9 +2,9 @@
 	Debug output kit(dout)
 	RFKit
 
-	ver 1.2.0
+	ver 1.2.1
  
-    Copyright (c) 2012 BB9z
+    Copyright (c) 2012-2013 BB9z
     http://github.com/bb9z/RFKit
 
     The MIT License (MIT)
@@ -278,6 +278,6 @@
 #define _dout_warning(...)
 #define _dout_error(...)
 
-void _dout_log_config();
+void _dout_log_config(void);
 
 #endif
