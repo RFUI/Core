@@ -24,6 +24,24 @@
     return img;
 }
 
++ (void)animateWithDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay options:(UIViewAnimationOptions)options animated:(BOOL)animated beforeAnimations:(void (^)(void))before animations:(void (^)(void))animations completion:(void (^)(BOOL finished))completion {
+    if (animated) {
+        if (before) {
+            before();
+        }
+        [UIView animateWithDuration:duration delay:delay options:options animations:animations completion:completion];
+    }
+    else {
+        if (animations) {
+            animations();
+        }
+        if (completion) {
+            completion(YES);
+        }
+    }
+}
+
+
 #pragma mark 视图位置／尺寸
 
 -(void)exhangeWidthHight {
