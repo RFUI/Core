@@ -1,7 +1,11 @@
 #import "dout.h"
 
 void _dout_log_config(void) {
+#ifdef DEBUG
     NSLog(@"DEBUG is %@", DEBUG? @"ON":@"OFF");
+#else
+    NSLog(@"DEBUG was not defined.");
+#endif
     NSLog(@"RFDebugLevel = %d", RFDebugLevel);
     NSLog(@"DOUT_LOG_ENABLE is %@", DOUT_LOG_ENABLE? @"ON":@"OFF");
     NSLog(@"DOUT_FALG_TRACE is %@", DOUT_FALG_TRACE? @"ON":@"OFF");

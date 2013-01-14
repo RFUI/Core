@@ -2,7 +2,7 @@
 	Debug output kit(dout)
 	RFKit
 
-	ver 1.2.1
+	ver 1.2.2
  
     Copyright (c) 2012-2013 BB9z
     http://github.com/bb9z/RFKit
