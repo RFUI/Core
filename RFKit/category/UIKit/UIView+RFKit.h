@@ -2,7 +2,7 @@
     RFKit
     UIView extension
 
-    Copyright (c) 2012 BB9z
+    Copyright (c) 2012-2013 BB9z
     http://github.com/bb9z/RFKit
 
     The MIT License (MIT)
@@ -22,6 +22,8 @@ typedef enum {
 } RFViewResizeOption;
 
 @interface UIView (RFKit)
+
+// Unfinished
 - (BOOL)isVisible;
 
 - (UIImage *)renderToImage;
@@ -40,14 +42,14 @@ typedef enum {
 
 /** Exchange a UIView`s width and Hight
  */
-- (void)exhangeWidthHight;
+- (void)exhangeWidthHight NS_DEPRECATED_IOS(2_0,6_0);
 
 
 /** Move a UIView relative to it`s position.
  
  @param x	X-axis distance to move
  @param y	Y-axis distance to move
- @see [UIView (extension) moveToX:Y:]
+ @see [UIView (RFKit) moveToX:Y:]
  */
 - (void)moveX:(CGFloat)x Y:(CGFloat)y;
 
@@ -58,7 +60,7 @@ typedef enum {
  
  @param x	New position on x-axis
  @param y	New position on y-axis
- @see  [UIView (extension) moveX:Y:]
+ @see  [UIView (RFKit) moveX:Y:]
  */
 - (void)moveToX:(CGFloat)x Y:(CGFloat)y;
 
