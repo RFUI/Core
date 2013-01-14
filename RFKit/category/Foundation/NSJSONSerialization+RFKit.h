@@ -1,6 +1,6 @@
 /*!
-    RFKit
     NSJSONSerialization extension
+    RFKit
 
     Copyright (c) 2012-2013 BB9z
     http://github.com/bb9z/RFKit
