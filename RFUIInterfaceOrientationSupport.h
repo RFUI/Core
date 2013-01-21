@@ -90,4 +90,9 @@
         return UIInterfaceOrientationMaskAll;\
     }
 
+#define _RFUIInterfaceOrientationSupportDefault RFUIInterfaceOrientationSupportAll
+#define _RFUIInterfaceOrientationSupportPortrait RFUIInterfaceOrientationSupportAll
+#define _RFUIInterfaceOrientationSupportLandscape RFUIInterfaceOrientationSupportAll
+#define _RFUIInterfaceOrientationSupportAll RFUIInterfaceOrientationSupportAll
+
 #endif
