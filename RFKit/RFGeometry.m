@@ -85,7 +85,7 @@ CGRect CGRectResize(CGRect original, CGSize newSize, RFResizeAnchor resizeAnchor
             break;
             
         default:
-            douts(@"Warning: CGRectResize >> Unknow RFResizeAnchor.")
+            dout_warning(@"CGRectResize >> Unknow RFResizeAnchor.")
             return CGRectZero;
             break;
     }

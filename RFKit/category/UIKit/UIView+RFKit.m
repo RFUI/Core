@@ -151,7 +151,7 @@
         [view removeFromSuperview];
     }
     else {
-        douts(@"Warning: RFKit [UIView removeSubview] 父视图没有指定的子视图")
+        dout_warning(@"RFKit [UIView removeSubview] 父视图没有指定的子视图")
     }
 }
 
@@ -206,11 +206,11 @@
 }
 
 -(BOOL)isInFront{
-	return ([self.superview.subviews lastObject]==self);
+	return ([self.superview.subviews lastObject] == self);
 }
 
 -(BOOL)isAtBack{
-	return ([self.superview.subviews objectAtIndex:0]==self);
+	return ([self.superview.subviews objectAtIndex:0] == self);
 }
 
 -(void)exchangeDepthsWithView:(UIView*)swapView{

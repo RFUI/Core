@@ -1,3 +1,4 @@
+
 #import "RFUI.h"
 
 bool RFEdgeEqualToEdge(RFEdge a, RFEdge b) {
@@ -8,7 +9,7 @@ bool RFEdgeEqualToEdge(RFEdge a, RFEdge b) {
 	return false;
 }
 
-RFEdge RFEdgeMake (float top, float right, float bottom, float left) {
+RFEdge RFEdgeMake(float top, float right, float bottom, float left) {
 	RFEdge tmp;
 	tmp.top = top;
 	tmp.right = right;
@@ -16,7 +17,8 @@ RFEdge RFEdgeMake (float top, float right, float bottom, float left) {
 	tmp.left = left;
 	return tmp;
 }
-RFEdge RFEdgeMakeWithRects (CGRect outterRect, CGRect innerRect) {
+
+RFEdge RFEdgeMakeWithRects(CGRect outterRect, CGRect innerRect) {
 	RFEdge tmp;
 	tmp.top = CGRectGetMinY(innerRect) - CGRectGetMinY(outterRect);
 	tmp.right = CGRectGetMaxX(outterRect) - CGRectGetMaxX(innerRect);
@@ -26,7 +28,7 @@ RFEdge RFEdgeMakeWithRects (CGRect outterRect, CGRect innerRect) {
 }
 
 
-CGRect RFPaddingInsetContentFrameForRect (CGRect boxFrame , RFPadding padding) {
+CGRect RFPaddingInsetContentFrameForRect(CGRect boxFrame, RFPadding padding) {
     CGPoint a = CGPointMake(boxFrame.origin.x + padding.left, boxFrame.origin.y + padding.top);
     CGPoint b = CGPointMake(boxFrame.origin.x + boxFrame.size.width - padding.right, boxFrame.origin.y + boxFrame.size.height - padding.bottom);
     return CGRectMakeWithPoints(a, b);

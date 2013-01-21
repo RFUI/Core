@@ -60,6 +60,7 @@ CG_INLINE RFBorder RFBorderMake (float top, float right, float bottom, float lef
 CG_INLINE RFPadding RFPaddingMake (float top, float right, float bottom, float left) {
 	return RFEdgeMake(top, right, bottom, left);
 }
+
 RFEdge RFEdgeMakeWithRects (CGRect outterRect, CGRect innerRect);
 CG_INLINE RFMargin RFMarginMakeWithRects (CGRect outterRect, CGRect innerRect) {
     return RFEdgeMakeWithRects(outterRect, innerRect);
