@@ -138,10 +138,9 @@
 			
 		case RFViewResizeOptionCenter:
 			view.center = self.center;
-			return;
 			break;
-			
-		default:
+            
+        case RFViewResizeOptionNone:
 			break;
 	}
 }

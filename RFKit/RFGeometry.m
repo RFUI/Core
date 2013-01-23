@@ -28,8 +28,8 @@ CGSize CGSizeScaled(CGSize original, float scale) {
 
 #pragma mark CGRect
 CGRect CGRectMakeWithPoints(CGPoint a, CGPoint b) {
-    CGFloat x = MIN(a.x, b.x);
-    CGFloat y = MIN(a.y, b.y);
+    CGFloat x = fminf(a.x, b.x);
+    CGFloat y = fminf(a.y, b.y);
     CGFloat width = fabsf(a.x-b.x);
     CGFloat height = fabsf(a.y-b.y);
     return CGRectMake(x, y, width, height);
@@ -87,7 +87,6 @@ CGRect CGRectResize(CGRect original, CGSize newSize, RFResizeAnchor resizeAnchor
         default:
             dout_warning(@"CGRectResize >> Unknow RFResizeAnchor.")
             return CGRectZero;
-            break;
     }
     return CGRectMake(x, y, wNew, hNew);
 }
