@@ -16,6 +16,10 @@
 #ifndef _RFKit_RFGeometry_h_
 #define _RFKit_RFGeometry_h_
 
+#ifndef RFMathNotChange
+#   define RFMathNotChange CGFLOAT_MAX
+#endif
+
 typedef enum {
 	RFResizeAnchorCenter = 0,
     RFResizeAnchorTop,

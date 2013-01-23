@@ -14,6 +14,3 @@
 
 #import "RFARC.h"
 
-#ifndef RFMathNotChange
-#   define RFMathNotChange CGFLOAT_MAX
-#endif
