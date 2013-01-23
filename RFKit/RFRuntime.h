@@ -9,6 +9,19 @@
     http://www.opensource.org/licenses/mit-license.php
  */
 
+// If DEBUG is true and NDEBUG is not defined, define RFDEBUG 1, else 0.
+#ifndef RFDEBUG
+#   ifdef NDEBUG
+#       define RFDEBUG 0
+#   else
+#       if DEBUG
+#           define RFDEBUG 1
+#       else
+#           define RFDEBUG 0
+#       endif
+#   endif
+#endif
+
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
