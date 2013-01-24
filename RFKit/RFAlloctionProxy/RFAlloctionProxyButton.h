@@ -1,12 +1,15 @@
-//
-//  RFAlloctionProxyButton.h
-//  peixunbu
-//
-//  Created by BB9z on 13-1-16.
-//  Copyright (c) 2013年 edoctor. All rights reserved.
-//
+/*!
+    RFAlloctionProxyButton
+    RFUI
 
-#import <UIKit/UIKit.h>
+    Copyright (c) 2012-2013 BB9z
+    https://github.com/RFUI/Core
+
+    The MIT License (MIT)
+    http://www.opensource.org/licenses/mit-license.php
+ */
+
+#import "RFRuntime.h"
 
 @interface RFAlloctionProxyButton : UIButton
 
