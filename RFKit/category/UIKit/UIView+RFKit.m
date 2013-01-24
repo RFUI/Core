@@ -49,6 +49,8 @@
 	self.frame = CGRectMake(tmp.origin.x, tmp.origin.y, tmp.size.height, tmp.size.width);
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored -Wfloat-equal
 - (void)moveX:(CGFloat)x Y:(CGFloat)y {
 	CGPoint tmp = self.center;
 	if (x != RFMathNotChange) tmp.x += x;
@@ -73,6 +75,7 @@
     CGRect targetFrame = CGRectResize(self.frame, newSize, resizeAnchor);
     self.frame = targetFrame;
 }
+#pragma clang diagnostic pop
 
 - (CGFloat)distanceBetweenFrameBottomAndSuperviewBottom {
 	CGRect frame = self.frame;
