@@ -1,4 +1,8 @@
+
 #import "dout.h"
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunreachable-code"
 
 void _dout_log_config(void) {
 #ifdef DEBUG
@@ -6,8 +10,8 @@ void _dout_log_config(void) {
 #else
     NSLog(@"DEBUG was not defined.");
 #endif
+    NSLog(@"RFDEBUG is %@", RFDEBUG? @"ON":@"OFF");
     NSLog(@"RFDebugLevel = %d", RFDebugLevel);
-    NSLog(@"DOUT_LOG_ENABLE is %@", DOUT_LOG_ENABLE? @"ON":@"OFF");
     NSLog(@"DOUT_FALG_TRACE is %@", DOUT_FALG_TRACE? @"ON":@"OFF");
     
     NSLog(@"DOUT_ASSERT_AT_ERROR is %@", DOUT_ASSERT_AT_ERROR? @"ON":@"OFF");
@@ -15,3 +19,4 @@ void _dout_log_config(void) {
     NSLog(@"DOUT_TREAT_ERROR_AS_EXCEPTION is %@", DOUT_TREAT_ERROR_AS_EXCEPTION? @"ON":@"OFF");
     NSLog(@"DOUT_TREAT_WANRNING_AS_EXCEPTION is %@", DOUT_TREAT_WANRNING_AS_EXCEPTION? @"ON":@"OFF");
 }
+#pragma clang diagnostic pop

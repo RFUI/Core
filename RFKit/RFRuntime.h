@@ -19,6 +19,16 @@
 #   endif
 #endif
 
+// This macro only change dout.h behave right now.
+// See dout.h for details.
+#ifndef RFDebugLevel
+#   if RFDEBUG
+#       define RFDebugLevel 2
+#   else
+#       define RFDebugLevel 1
+#   endif
+#endif
+
 #pragma mark -
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
