@@ -9,19 +9,17 @@
     http://www.opensource.org/licenses/mit-license.php
  */
 
+#pragma mark - Macro options
 // If DEBUG is true and NDEBUG is not defined, define RFDEBUG 1, else 0.
 #ifndef RFDEBUG
-#   ifdef NDEBUG
-#       define RFDEBUG 0
+#   if DEBUG && !defined(NDEBUG)
+#       define RFDEBUG 1
 #   else
-#       if DEBUG
-#           define RFDEBUG 1
-#       else
-#           define RFDEBUG 0
-#       endif
+#       define RFDEBUG 0
 #   endif
 #endif
 
+#pragma mark -
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
