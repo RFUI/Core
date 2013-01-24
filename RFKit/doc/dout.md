@@ -2,6 +2,8 @@
 
 dout
 =======
+<small>ver 1.3.0</small>
+
 Xcode 和 lldv 为运行时调试提供了强大的支持，但打印这种相对原始的方式仍然是极为重要且有效的调试手段，效率常常要比设断点单步跟踪要高。
 
 dout 就是专为调试打印而生的工具。
@@ -38,14 +40,6 @@ dout 就是专为调试打印而生的工具。
 ### RFDebugLevel
 dout 的总开关，设置为 `0` 时静默，完全不起作用；`1` 为默认设置，可用于生产环境；`2` 时会激活大部分打印方法； `dout_warning()` 在 `3` 时激活；`dout_info()` 在 `5` 时激活。
 
-### DEBUG
-如果事先没有定义，当 `RFDebugLevel` 大于 1 时会被定义为 `1`。
-
-### DOUT_LOG_ENABLE
-控制是否打印输出的开关。
-
-如果事先没有定义，当 `RFDebugLevel` 大于 1 时会被定义为 `1`，否则为`0`。
-
 ### DOUT_FALG_TRACE
 当其激活时，会在每个 dout 输出前附加一段调用的位置，用于确定每条语句是在何处打印的。当打印语句较多时可以用于区分，或便于找到某些语句以禁用之。
 
@@ -56,6 +50,13 @@ dout 的总开关，设置为 `0` 时静默，完全不起作用；`1` 为默认
 DOUT_ASSERT_AT_ERROR，DOUT_ASSERT_AT_WANRNING，DOUT_TREAT_ERROR_AS_EXCEPTION，
 DOUT_TREAT_WANRNING_AS_EXCEPTION。
 设置为 `1` 以激活。
+
+### 设置开关的建议
+默认 `RFDebugLevel` 的级别是 1 ~ 2，建议通过项目设置的 Preprocessor Macros 按需设置，下图是一个例子：
+
+![根据不同需要设置编译开关](define_debuglevel_use_preproccessor_marco.png)
+
+**提示**：你可以在其他代码中重新定义 `RFDebugLevel`，以控制 dout 在相关作用域的行为。
 
 _dout
 ------------
