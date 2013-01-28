@@ -14,5 +14,5 @@
 @interface UIStoryboard (RFKit)
 
 // By using this method, you must set view controller stroryboard ID to it's class name.
-- (UIViewController *)instantiateViewControllerWithIdentifierUsingClassName:(Class)viewControllerClass;
+- (id)instantiateViewControllerWithIdentifierUsingClass:(Class)viewControllerClass;
 @end
