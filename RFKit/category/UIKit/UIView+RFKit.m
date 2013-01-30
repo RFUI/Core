@@ -50,7 +50,7 @@
 }
 
 #pragma clang diagnostic push
-#pragma clang diagnostic ignored -Wfloat-equal
+#pragma clang diagnostic ignored "-Wfloat-equal"
 - (void)moveX:(CGFloat)x Y:(CGFloat)y {
 	CGPoint tmp = self.center;
 	if (x != RFMathNotChange) tmp.x += x;
