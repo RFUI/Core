@@ -137,7 +137,7 @@
             [[NSAssertionHandler currentHandler] handleFailureInFunction:[NSString stringWithCString:__PRETTY_FUNCTION__ encoding:NSUTF8StringEncoding] file:[NSString stringWithCString:__FILE__ encoding:NSUTF8StringEncoding] lineNumber:__LINE__ description:__VA_ARGS__];
 #   else
 #       define RFALog(...)\
-            dout_error(@"%s %@", __PRETTY_FUNCTION__, __VA_ARGS__]);
+            dout_error(@"%s %@", __PRETTY_FUNCTION__, [NSString stringWithFormat:__VA_ARGS__])
 #   endif
 #endif
 
