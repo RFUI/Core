@@ -2,7 +2,7 @@
 #import "RFKit.h"
 
 // Eliminate CALayer forward declaration warning
-#import <QuartzCore/CALayer.h>
+#import <QuartzCore/QuartzCore.h>
 
 @implementation UIView (RFKit)
 
@@ -212,15 +212,15 @@
 	}
 }
 
-- (int)getSubviewIndex{
+- (NSUInteger)siblingIndex {
 	return [self.superview.subviews indexOfObject:self];
 }
 
-- (void)bringToFront{
+- (void)bringToFront {
 	[self.superview bringSubviewToFront:self];
 }
 
-- (void)sentToBack{
+- (void)sentToBack {
 	[self.superview sendSubviewToBack:self];
 }
 
@@ -246,26 +246,26 @@
 	self.frame = tmp;
 }
 
-- (void)bringOneLevelUp{
-	NSUInteger CurrentIndex = [self getSubviewIndex];
-	[self.superview exchangeSubviewAtIndex:CurrentIndex withSubviewAtIndex:CurrentIndex+1];
+- (void)bringOneLevelUp {
+	NSUInteger ixCurrent = [self siblingIndex];
+	[self.superview exchangeSubviewAtIndex:ixCurrent withSubviewAtIndex:ixCurrent+1];
 }
 
-- (void)sendOneLevelDown{
-	int currentIndex = [self getSubviewIndex];
-	[self.superview exchangeSubviewAtIndex:currentIndex withSubviewAtIndex:currentIndex-1];
+- (void)sendOneLevelDown {
+	NSUInteger ixCurrent = [self siblingIndex];
+	[self.superview exchangeSubviewAtIndex:ixCurrent withSubviewAtIndex:ixCurrent-1];
 }
 
-- (BOOL)isInFront{
-	return ([self.superview.subviews lastObject] == self);
+- (BOOL)isInFront {
+    return ([self.superview.subviews lastObject] == self);
 }
 
-- (BOOL)isAtBack{
-	return ([self.superview.subviews objectAtIndex:0] == self);
+- (BOOL)isAtBack {
+    return ([self.superview.subviews objectAtIndex:0] == self);
 }
 
-- (void)exchangeDepthsWithView:(UIView*)swapView{
-	[self.superview exchangeSubviewAtIndex:[self getSubviewIndex] withSubviewAtIndex:[swapView getSubviewIndex]];
+- (void)exchangeDepthsWithView:(UIView *)swapView {
+	[self.superview exchangeSubviewAtIndex:[self siblingIndex] withSubviewAtIndex:[swapView siblingIndex]];
 }
 
 @end
