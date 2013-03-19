@@ -7,13 +7,62 @@
 @implementation UIView (RFKit)
 
 - (BOOL)isVisible {
-	if (self.hidden == YES || self.alpha == 0.f) {
-		return NO;
-	}
-	else {
-		CGRect boundsInWindow = [self convertRect:self.bounds toView:nil];
-		return !CGRectIsOutOfRect(boundsInWindow, [UIScreen mainScreen].bounds);
-	}
+    _douto(self)
+    
+    if (self.hidden || self.alpha == 0.f) {
+        return NO;
+    }
+    
+    // Window is special. There may be an external screen.
+    if ([self isKindOfClass:[UIWindow class]]) {
+        UIWindow *selfRef = self;
+        if (!selfRef.screen) return NO;
+        return CGRectIntersectsRect(selfRef.screen.bounds, selfRef.frame);
+    }
+    
+    // Not added to a window.
+    if (!self.window) {
+        _dout_info(@"View not added to view hierarchies yet.");
+        return NO;
+    }
+
+    // Out side screen bounds.
+    if (!CGRectIntersectsRect(self.window.screen.bounds, [self frameOnScreen])) {
+        _dout_info(@"Out side screen.")
+        return NO;
+    }
+    
+    // The rect is in window, now check superviews.　
+    UIView *parent = self.superview;
+    CGRect ctFrame = self.frame;
+    while (parent.superview) {
+        _dout_rect(ctFrame)
+        _douto(parent)
+        
+        if (parent.clipsToBounds && !CGRectIntersectsRect(parent.bounds, ctFrame)) {
+            _dout_info(@"Outside cliped view");
+            return NO;
+        }
+        
+        if (parent.hidden || parent.alpha == 0.f) return NO;
+        
+        ctFrame = [parent convertRect:ctFrame toView:parent.superview];
+        parent = parent.superview;
+    }
+    
+    // parent is window, check screen now
+    UIWindow *aWindow = parent;
+    if (aWindow.clipsToBounds && !CGRectIntersectsRect(aWindow.screen.bounds, [aWindow convertRect:ctFrame toWindow:nil])) {
+        return NO;
+    }
+    return YES;
+}
+
+- (CGRect)frameOnScreen {
+    CGRect frameInWindow = [self convertRect:self.bounds toView:nil];
+    _dout_rect(frameInWindow)
+    _dout_rect([self.window convertRect:frameInWindow toWindow:nil])
+    return [self.window convertRect:frameInWindow toWindow:nil];
 }
 
 - (UIImage *)renderToImage {

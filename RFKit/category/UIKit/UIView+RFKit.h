@@ -23,8 +23,20 @@ typedef enum {
 
 @interface UIView (RFKit)
 
-// Unfinished
+/** A Boolean value that indicates whether the receiver is displayed.
+ 
+ @discussion This method not only consider view’s hidden, alpha property or whether was added into a view or not. It looks up every supview to make sure the view is in screen’s bounds and not cliped indeed. But covered by another view is not considering.
+ 
+ Before a view is added to the view hierarchies, such as within UIViewController’s viewDidLoad method, the view is not visible because it’s not on screen yet.
+ 
+ @return `YES` if the view is visible, `NO` otherwise.
+ */
 - (BOOL)isVisible;
+
+/** 
+ @return The frame rectangle, which describes the view’s location and size in its screen’s coordinate system.
+ */
+- (CGRect)frameOnScreen;
 
 - (UIImage *)renderToImage;
 
