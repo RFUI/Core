@@ -10,6 +10,7 @@
  */
 
 #import "RFRuntime.h"
+#import "RFGeometry.h"
 
 typedef enum {
 	RFViewResizeOptionNone		 = 0,
