@@ -15,7 +15,7 @@
     
     // Window is special. There may be an external screen.
     if ([self isKindOfClass:[UIWindow class]]) {
-        UIWindow *selfRef = self;
+        UIWindow *selfRef = (UIWindow *)self;
         if (!selfRef.screen) return NO;
         return CGRectIntersectsRect(selfRef.screen.bounds, selfRef.frame);
     }
@@ -51,7 +51,7 @@
     }
     
     // parent is window, check screen now
-    UIWindow *aWindow = parent;
+    UIWindow *aWindow = (UIWindow *)parent;
     if (aWindow.clipsToBounds && !CGRectIntersectsRect(aWindow.screen.bounds, [aWindow convertRect:ctFrame toWindow:nil])) {
         return NO;
     }
