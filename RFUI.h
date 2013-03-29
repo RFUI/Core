@@ -11,16 +11,12 @@
 #ifndef _RFUI_h
 #define _RFUI_h
 
+// To use RFUI you must add RFKit to your project first.
+// Viste https://github.com/BB9z/RFKit for more infomation.
 #import "RFKit.h"
+
 #import "RFUIDebug.h"
 #import "RFUIInterfaceOrientationSupport.h"
-
-#ifndef _RFKit_h_
-    #error \
-    RFKit not found, \
-    To use RFUI you must add RFKit to your project first. \
-    For more infomation about RFKit, viste: https://github.com/BB9z/RFKit
-#endif
 
 typedef enum {
     RFUIOrientationVertical = 0,
