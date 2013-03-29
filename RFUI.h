@@ -11,10 +11,7 @@
 #ifndef _RFUI_h
 #define _RFUI_h
 
-// To use RFUI you must add RFKit to your project first.
-// Viste https://github.com/BB9z/RFKit for more infomation.
 #import "RFKit.h"
-
 #import "RFUIDebug.h"
 #import "RFUIInterfaceOrientationSupport.h"
 
