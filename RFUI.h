@@ -14,7 +14,6 @@
 #import "RFKit.h"
 #import "RFUIDebug.h"
 #import "RFUIInterfaceOrientationSupport.h"
-#import "RFFeatureSupportProxyDelegates.h"
 
 #ifndef _RFKit_h_
     #error \
