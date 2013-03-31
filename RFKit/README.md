@@ -1,81 +1,84 @@
 RFKit Document
 =================
 <base href="//github.com/BB9z/RFKit/blob/master/" />
+<small>*English :us:* [简体中文 :cn:](README~zh-hans.md)</small>
 
-RFKit 包含一套对日常iOS开发很有帮助的工具。
+RFKit was a useful toolkit for daily iOS development.
+
 
 dout
 ------
-dout为调试打印而生，它包含了一套方便打印工具。
+dout contains a set of convenient log toolcha, which was designed for debugging.
 
-特色：
+Features:
 
-* 打印变量会在结果前添加打印的表达式。
+* Auto add expression before the results.
 
-  如：
+  e.g.:
 
   ```
 int a = 10;
 dout_int(101+a)	// Output: 101+a = 111
   ```
 
-* 支持打印语句本身的跟踪，开启 `DOUT_FALG_TRACE` 以激活。 
-* 专用于警告、错误输出的语句，可配置为抛出异常或断言失败。
-* 因为是宏，当禁用时通常不会有性能损失。
+* Support add position information in log output to help tracking location of log statements. Set `DOUT_FALG_TRACE` as `1` to active. 
+* Special log methods for warning and error. Can change theirs behave to throw exception or assert fail.
+* As macro, usually no performance loss.
 
-详见：[dout 文档](doc/dout.md)
+Details: [dout Document](doc/dout.md)
 
 
 RFRuntime
 -------------
-处理编译/运行时差异，为上层组件提供统一、简单的界面。包含：调试开关定义，默认头文件，RFARC，语言扩展。
+Handle build or runtime differences. Provides an unified and simple interface for upper components. Contains：debugging switch define, default header file, RFARC and language extensions.
 
-### 调试开关
-`RFDEBUG`， RFKit 调试模式开关，为 `1` 时启用。若未定义，当 `DEBUG` 为真且未定义 `NDEBUG` 将自动定义为 `1`。
+### Debug switch
+`RFDEBUG`, RFKit debug mode switch. Set as `1` to active. If it´s not defined, will defined as `1` when `DEBUG` is true and `NDEBUG` not defined.
 
-`RFDebugLevel`，调试行为级别控制。若未定义，当 `RFDEBUG` 为真时自动定义为 `2`，否则为 `1`。
+`RFDebugLevel`, controlling debugging behavior. If it´s not defined, will be defined as `2` if `RFDEBUG` is true, otherwise `1`.
 
-### 默认头文件
-RFRuntime 默认包括了 UIKit 和 Foundation 头文件。
+### Default header file
+UIKit and Foundation header is included in RFRuntime by default.
 
 ### RFARC
-专用于处理ARC的兼容，借助 `RF_STRONG`、`RF_WEAK` 等宏可以写出同时兼容ARC和非ARC环境的代码。iOS6后，ARC增加了对GCD的支持，随之又增加了 `RF_dispatch_retain` 和 `RF_dispatch_release`。
+Dedicated to processing the ARC's compatible. One can write code which is compatible with the ARC and non-ARC environment with `RF_STRONG` and `RF_WEAK`. As ARC support GCD after iOS 6, `RF_dispatch_retain` and `RF_dispatch_release` were added.
 
-### 语言扩展
-* @keypath，key path 辅助完成工具。将输入转换为 key path 字符串，下举例说明。
+### Language extensions
+* @keypath，key path completing helper. Convert input to key path string, for example:
 
-	现有 `UIViewController *a`，要使用 KVO 监听其 view 的 `frame` 变化，可以这样写：
+	Suppose there are `UIViewController *a`. To observer `frame` changes of the view using KVO, we can write like:
 
 	```
 [a addObserver:someObject forKeyPath:@"view.frame" options:NSKeyValueObservingOptionNew context:NULL];
 	```
 	
-	这里的 key path 是字符串硬编码的，多有不便，用 `@keypath` 可以这样：
+	The key path was hard-coded here which cause much inconvenience. Using `@keypath` we can write like:
 
 	```
 [a addObserver:someObject forKeyPath:@keypath(a, view.frame) options:NSKeyValueObservingOptionNew context:NULL];
 	```
 
-	不但有了编译检查，甚至属性可以自动完成。
+	Compiler can check it, and code completion support these property now.
+
 
 UIKit & Foundation Categories 
 -------------
-UIKit 和 Foundation 的扩展是 RFKit 的重要组成部分，包含了很多实用方法。
+Important part of RFKit. They contains many useful methods.
 
-`RFKitDefaultCategories.h` 定义了默认包含的扩展。
+`RFKitDefaultCategories.h` defends which extension is imported by default.
 
-每个扩展的具体功能见头文件。
+See each header file to know the specific features.
 
 
 RFGeometry
 -------------
-为 `CGPoint`、`CGSize`、`CGRect` 等几何结构增加了新的方法，增加了新的 `CGAngle` 角度结构。
+Add new methods for geometry structures: `CGPoint`, `CGSize`, `CGRect`. Add an new `CGAngle` angle structure.
 
-`RFResizeAnchor` 和 `RFAlignmentAnchor` 为尺寸调整、对齐提供参考基准。  
+`RFResizeAnchor` and `RFAlignmentAnchor` provides a reference for resizing and aligning.
 
 
-其他
+Others
 -------------
-external 文件夹下存放其他外部组件。
+Some external components were placed under `external` folder.
 
-UncaughtExceptionHandler，一般用于内部测试，调用 `InstallUncaughtExceptionHandler()` 激活后，可以捕获到应用运行时的错误，帮助在非调试环境确定问题所在。
+UncaughtExceptionHandler, generally used for internal testing. Call  `InstallUncaughtExceptionHandler()` to active. It catch errors at runtime to determine problems in non-debug environment.
