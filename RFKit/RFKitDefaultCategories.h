@@ -26,6 +26,7 @@
 #import "UIColor+RFKit.h"
 #import "UIDevice+RFKit.h"
 #import "UIImage+RFKit.h"
+//#import "UISearchBar+RFKit.h"
 #import "UIStoryboard+RFKit.h"
 //#import "UITableView+RFKit.h"
 #import "UIView+RFKit.h"
