@@ -2,7 +2,7 @@
 	Debug output kit(dout)
 	RFKit
 
-	ver 1.3.1
+	ver 1.4.0
  
     Copyright (c) 2012-2013 BB9z
     https://github.com/bb9z/RFKit
@@ -160,6 +160,12 @@
 #else
     #define DTRYCATCH_START
     #define DTRYCATCH_END
+#endif
+
+#pragma mark - Others
+/// Cover input to NSString.
+#ifndef s
+#   define s(...) @#__VA_ARGS__
 #endif
 
 #pragma mark - _dout
