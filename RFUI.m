@@ -1,6 +1,8 @@
 
 #import "RFUI.h"
 
+float RFUIDebugSlowAnimationsRatio = 10;
+
 bool RFEdgeEqualToEdge(RFEdge a, RFEdge b) {
 	if (a.top == b.top && a.right == b.right &&
 		a.bottom == b.bottom && a.left == b.left) {

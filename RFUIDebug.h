@@ -13,7 +13,11 @@
 #define _RFUIDebug_h
 
 #ifndef RFUIDebugEnableRandomBackgroundColor
-    #define RFUIDebugEnableRandomBackgroundColor 0
+#define RFUIDebugEnableRandomBackgroundColor 0
+#endif
+
+#ifndef RFUIDebugEnableSlowAnimations
+#define RFUIDebugEnableSlowAnimations 0
 #endif
 
 #endif

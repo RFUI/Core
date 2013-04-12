@@ -86,3 +86,6 @@ extern const RFBorder  RFBorderZero;
 extern const RFPadding RFPaddingZero;
 
 #endif
+
+// Default is 10x.
+extern float RFUIDebugSlowAnimationsRatio;
