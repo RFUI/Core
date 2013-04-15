@@ -89,3 +89,8 @@ extern const RFPadding RFPaddingZero;
 
 // Default is 10x.
 extern float RFUIDebugSlowAnimationsRatio;
+
+// UIViewAutoresizing enum extend
+extern NSUInteger const UIViewAutoresizingFlexibleSize;
+extern NSUInteger const UIViewAutoresizingFlexibleMargin;
+
