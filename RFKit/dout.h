@@ -2,7 +2,7 @@
 	Debug output kit(dout)
 	RFKit
 
-	ver 1.4.0
+	ver 1.4.1
  
     Copyright (c) 2012-2013 BB9z
     https://github.com/bb9z/RFKit
@@ -74,7 +74,7 @@
 #define douts(string)\
     {if(RFDebugLevel >= 2) NSLog(@"%@%@", DOUT_TRACE_FORMATTER, (string));}
 
-#define douto(...)      dout(@"%s = <%@> %@", #__VA_ARGS__, [(__VA_ARGS__) class], (__VA_ARGS__))
+#define douto(...)      dout(@"%s = <%@> %@", #__VA_ARGS__, [(NSObject *)(__VA_ARGS__) class], (__VA_ARGS__))
 #define doutp(...)      dout(@"%s -> %p", #__VA_ARGS__, (__VA_ARGS__))
 #define dout_bool(...)  dout(@"%s = %@", #__VA_ARGS__, ((BOOL)(__VA_ARGS__))? @"YES" : @"NO")
 #define dout_int(...)   dout(@"%s = %d", #__VA_ARGS__, ((int)(__VA_ARGS__)))
