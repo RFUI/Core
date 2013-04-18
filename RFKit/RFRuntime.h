@@ -30,6 +30,7 @@
 #endif
 
 #pragma mark -
+#include "metamacros.h"
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
