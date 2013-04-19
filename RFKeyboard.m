@@ -22,7 +22,7 @@
     if (keyboardRect.size.width) zeroCount++;
     if (keyboardRect.size.height) zeroCount++;
     
-    return (zeroCount == 2)? YES : NO;
+    return (zeroCount != 2)? YES : NO;
 }
 
 @end
