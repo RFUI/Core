@@ -14,6 +14,7 @@
 #import "RFKit.h"
 #import "RFUIDebug.h"
 #import "RFUIInterfaceOrientationSupport.h"
+#import "RFKeyboard.h"
 
 typedef enum {
     RFUIOrientationVertical = 0,
