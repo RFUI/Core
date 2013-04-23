@@ -35,8 +35,8 @@
 
 + (NSDateFormatter *)dateFormatterWithDateFormat:(NSString *)formatString timeZoneWithName:(NSString *)tzName {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setTimeZone:[NSTimeZone timeZoneWithName:@"Asia/Hong_Kong"]];
-    [formatter setDateFormat:tzName];
+    [formatter setTimeZone:[NSTimeZone timeZoneWithName:tzName]];
+    [formatter setDateFormat:formatString];
     return formatter;
 }
 
