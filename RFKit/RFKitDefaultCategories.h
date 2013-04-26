@@ -28,7 +28,7 @@
 #import "UIImage+RFKit.h"
 //#import "UISearchBar+RFKit.h"
 #import "UIStoryboard+RFKit.h"
-//#import "UITableView+RFKit.h"
+#import "UITableView+RFKit.h"
 #import "UIView+RFKit.h"
 #import "UIViewController+RFKit.h"
 //#import "UIWebView+RFKit.h"
