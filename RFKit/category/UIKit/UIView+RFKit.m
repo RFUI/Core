@@ -93,9 +93,8 @@
 
 #pragma mark 视图位置／尺寸
 
-- (void)exhangeWidthHight {
-	CGRect tmp = self.bounds;
-	self.frame = CGRectMake(tmp.origin.x, tmp.origin.y, tmp.size.height, tmp.size.width);
+- (void)sizeToFitSuperview {
+    self.frame = self.superview.bounds;
 }
 
 #pragma clang diagnostic push

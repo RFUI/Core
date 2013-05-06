@@ -53,12 +53,14 @@ typedef enum {
  */
 + (void)animateWithDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay options:(UIViewAnimationOptions)options animated:(BOOL)animated beforeAnimations:(void (^)(void))before animations:(void (^)(void))animations completion:(void (^)(BOOL finished))completion;
 
-/** Exchange a UIView’s width and Hight
+/**
+ @abstract Resizes and moves the receiver view so it fits its superview bounds.
  */
-- (void)exhangeWidthHight NS_DEPRECATED_IOS(2_0,6_0);
+- (void)sizeToFitSuperview;
 
 
-/** Move a UIView relative to it’s position.
+/**
+ @abstract Move a UIView relative to it’s current position.
  
  @param x	X-axis distance to move
  @param y	Y-axis distance to move
@@ -67,7 +69,8 @@ typedef enum {
 - (void)moveX:(CGFloat)x Y:(CGFloat)y;
 
 
-/** Move a UIView relative to it’s 
+/**
+ @abstract Move a UIView to specified position. 
  
  @discussion This method use frame setting new position. Set parameter equal to CGFLOAT_MAX if you don’t want move in that direction.
  
