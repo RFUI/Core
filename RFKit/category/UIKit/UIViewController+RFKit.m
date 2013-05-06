@@ -11,17 +11,21 @@
 	RF_RELEASE_OBJ(tmpBack);
 }
 
-- (void)addChildViewController:(UIViewController *)childController intoView:(UIView *)subview {
+- (void)addChildViewController:(UIViewController *)childController intoView:(UIView *)viewControllerSubview {
     [self addChildViewController:childController];
-    if (subview) {
-        [subview addSubview:childController.view];
+    if (viewControllerSubview) {
+        [viewControllerSubview addSubview:childController.view];
     }
     else {
         [self.view addSubview:childController.view];
     }
+    
+    [self didMoveToParentViewController:self];
 }
 
 - (void)removeFromParentViewControllerAndView {
+    [self willMoveToParentViewController:nil];
+    
     if (self.view.superview) {
         [self.view removeFromSuperview];
     }
@@ -32,7 +36,8 @@
 }
 
 //! via: http://lldong.github.com/blog/2012/11/02/dissmiss-keyboard/
-- (void)dismissKeyboard {    
+- (void)dismissKeyboard {
+//    [self.view endEditing:NO];
     [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
 }
 
