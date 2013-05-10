@@ -38,11 +38,14 @@
 //! ref: http://lldong.github.com/blog/2012/11/02/dissmiss-keyboard/
 - (void)dismissKeyboard {
     if ([self isViewLoaded]) {
-        [self.view endEditing:NO];
+        if ([self.view endEditing:NO]) {
+            return;
+        }
     }
-    else {
-        [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
-    }
+    
+    // The text field which present the keyboaed not belonging to this view controller.
+    // So traversing responder chain now.
+    [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
 }
 
 @end

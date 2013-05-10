@@ -31,5 +31,10 @@
  */
 - (void)removeFromParentViewControllerAndView;
 
+/**
+ @abstract Dismiss keyboard by resign the first responder status.
+ 
+ @discussion You can use this method to dismiss keyboard even the first responder not belong to the reciver.
+ */
 - (void)dismissKeyboard;
 @end
