@@ -35,10 +35,14 @@
     }
 }
 
-//! via: http://lldong.github.com/blog/2012/11/02/dissmiss-keyboard/
+//! ref: http://lldong.github.com/blog/2012/11/02/dissmiss-keyboard/
 - (void)dismissKeyboard {
-//    [self.view endEditing:NO];
-    [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
+    if ([self isViewLoaded]) {
+        [self.view endEditing:NO];
+    }
+    else {
+        [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
+    }
 }
 
 @end
