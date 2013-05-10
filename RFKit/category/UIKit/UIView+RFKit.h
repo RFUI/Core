@@ -112,4 +112,14 @@ typedef enum {
 
 - (void)exchangeDepthsWithView:(UIView *)swapView;
 
+
+/**
+ @abstract Traversing the responder chain to get a UIViewController reletive to the receiver.
+  
+ @warning The receiver may be not the returned view controller´s view property.
+ 
+ @return A view controller, may not be the receiver´s parent.
+*/
+- (UIViewController *)viewController;
+
 @end
