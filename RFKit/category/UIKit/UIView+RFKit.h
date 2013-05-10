@@ -24,24 +24,8 @@ typedef enum {
 
 @interface UIView (RFKit)
 
-/** A Boolean value that indicates whether the receiver is displayed.
- 
- @discussion This method not only consider view’s hidden, alpha property or whether was added into a view or not. It looks up every supview to make sure the view is in screen’s bounds and not cliped indeed. But covered by another view is not considering.
- 
- Before a view is added to the view hierarchies, such as within UIViewController’s viewDidLoad method, the view is not visible because it’s not on screen yet.
- 
- @return `YES` if the view is visible, `NO` otherwise.
- */
-- (BOOL)isVisible;
-
 /** 
- @return The frame rectangle, which describes the view’s location and size in its screen’s coordinate system.
- */
-- (CGRect)frameOnScreen;
-
-- (UIImage *)renderToImage;
-
-/** Animate helper for animateWithDuration:delay:options:animations:completion:
+ @abstract Animate helper for animateWithDuration:delay:options:animations:completion:
  
  @param duration    The total duration of the animations, measured in seconds. If you specify a negative value or 0, the changes are made without animating them.
  @param delay       The amount of time (measured in seconds) to wait before beginning the animations. Specify a value of 0 to begin the animations immediately.
@@ -53,12 +37,7 @@ typedef enum {
  */
 + (void)animateWithDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay options:(UIViewAnimationOptions)options animated:(BOOL)animated beforeAnimations:(void (^)(void))before animations:(void (^)(void))animations completion:(void (^)(BOOL finished))completion;
 
-/**
- @abstract Resizes and moves the receiver view so it fits its superview bounds.
- */
-- (void)sizeToFitSuperview;
-
-
+#pragma mark -
 /**
  @abstract Move a UIView relative to it’s current position.
  
@@ -67,7 +46,6 @@ typedef enum {
  @see [UIView (RFKit) moveToX:Y:]
  */
 - (void)moveX:(CGFloat)x Y:(CGFloat)y;
-
 
 /**
  @abstract Move a UIView to specified position. 
@@ -80,8 +58,8 @@ typedef enum {
  */
 - (void)moveToX:(CGFloat)x Y:(CGFloat)y;
 
-
-/** Resize a UIView
+/** 
+ @abstract Resize a UIView
  
  @discussion Set parameter equal to RFMathNotChange if you don’t want resize that direction.
  
@@ -91,17 +69,22 @@ typedef enum {
 - (void)resizeWidth:(CGFloat)width height:(CGFloat)height;
 - (void)resizeWidth:(CGFloat)width height:(CGFloat)height resizeAnchor:(RFResizeAnchor)resizeAnchor;
 
-- (CGFloat)distanceBetweenFrameBottomAndSuperviewBottom;
+/**
+ @abstract Resizes and moves the receiver view so it fits its superview bounds.
+ */
+- (void)sizeToFitSuperview;
 
+#pragma mark - View Hierarchy Management
 - (void)addSubview:(UIView *)view frame:(CGRect)rect;
 - (void)addSubview:(UIView *)view resizeOption:(RFViewResizeOption)option;
-- (void)removeSubview:(UIView *)view;
 
+- (void)removeSubview:(UIView *)view;
 - (void)removeAllSubviews;
 
 - (void)bringAboveView:(UIView *)aView;
-- (void)bringToFront;
 - (void)sentBelowView:(UIView *)aView;
+
+- (void)bringToFront;
 - (void)sentToBack;
 
 - (void)bringOneLevelUp;
@@ -111,6 +94,27 @@ typedef enum {
 - (BOOL)isAtBack;
 
 - (void)exchangeDepthsWithView:(UIView *)swapView;
+
+#pragma mark - Others
+/** 
+ @abstract A Boolean value that indicates whether the receiver is displayed.
+ 
+ @discussion This method not only consider view’s hidden, alpha property or whether was added into a view or not. It looks up every supview to make sure the view is in screen’s bounds and not cliped indeed. But covered by another view is not considering.
+ 
+ Before a view is added to the view hierarchies, such as within UIViewController’s viewDidLoad method, the view is not visible because it’s not on screen yet.
+ 
+ @return `YES` if the view is visible, `NO` otherwise.
+ */
+- (BOOL)isVisible;
+
+/**
+ @return The frame rectangle, which describes the view’s location and size in its screen’s coordinate system.
+ */
+- (CGRect)frameOnScreen;
+
+- (UIImage *)renderToImage;
+
+- (CGFloat)distanceBetweenFrameBottomAndSuperviewBottom;
 
 
 /**
