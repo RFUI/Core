@@ -54,7 +54,7 @@
 #endif
 
 /** DOUT_TRACE_FORMATTER
-	This macro should define as NSString
+	This macro should be defined as NSString
  */
 #ifndef DOUT_TRACE_FORMATTER
 #	if DOUT_FALG_TRACE
