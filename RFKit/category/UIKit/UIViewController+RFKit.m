@@ -11,6 +11,16 @@
 	RF_RELEASE_OBJ(tmpBack);
 }
 
++ (UIViewController *)rootViewControllerWhichCanPresentModalViewController {
+    UIViewController *vc = ([UIApplication sharedApplication].keyWindow.rootViewController)? : [(UIWindow *)[[UIApplication sharedApplication].windows firstObject] rootViewController];
+    
+    while (vc.presentedViewController) {
+        vc = vc.presentedViewController;
+    }
+    
+    return vc;
+}
+
 - (void)addChildViewController:(UIViewController *)childController intoView:(UIView *)viewControllerSubview {
     [self addChildViewController:childController];
     if (viewControllerSubview) {

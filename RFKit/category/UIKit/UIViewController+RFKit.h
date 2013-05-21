@@ -15,6 +15,15 @@
 - (void)setNavTitle:(NSString *)title back:(NSString *)backTitle;
 
 /**
+ @abstract Return a view which can present another view controller.
+ 
+ @discussion First we get an window´s root view controller. Then  traverse its presentedViewController property until the presentedViewController property is nil.
+ 
+ @return A view controller which can present another view controller.
+ */
++ (UIViewController *)rootViewControllerWhichCanPresentModalViewController;
+
+/**
  @abstract Adds the given view controller as a child and add its view to specified view as a subview.
  
  @discussion Using this method, you dont need to call  `didMoveToParentViewController` manually.
