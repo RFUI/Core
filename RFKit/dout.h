@@ -2,7 +2,7 @@
 	Debug output kit(dout)
 	RFKit
 
-	ver 1.4.1
+	ver 1.4.2
  
     Copyright (c) 2012-2013 BB9z
     https://github.com/bb9z/RFKit
@@ -97,7 +97,7 @@
 #ifndef dout_warning
     #if DOUT_ASSERT_AT_WANRNING
         #define dout_warning(...)\
-            {if (RFDebugLevel >= 3) NSAssert(false, [NSString stringWithFormat:__VA_ARGS__]);}
+            {if (RFDebugLevel >= 3) NSAssert(false, __VA_ARGS__);}
 
     #elif DOUT_TREAT_WANRNING_AS_EXCEPTION
         #define dout_warning(...)\
@@ -112,7 +112,7 @@
 #ifndef dout_error
     #if DOUT_ASSERT_AT_ERROR
         #define dout_error(...)\
-            {if (RFDebugLevel >= 2) NSAssert(false, [NSString stringWithFormat:__VA_ARGS__]);}
+            {if (RFDebugLevel >= 2) NSAssert(false, __VA_ARGS__);}
 
     #elif DOUT_TREAT_ERROR_AS_EXCEPTION
         #define dout_error(...)\
