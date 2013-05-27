@@ -2,6 +2,10 @@
 #import "RFGeometry.h"
 #import <stdio.h>
 
+const CGPoint CGPointNotChange = {RFMathNotChange, RFMathNotChange};
+const CGRect  CGRectNotChange  = {{RFMathNotChange, RFMathNotChange}, {RFMathNotChange, RFMathNotChange}};
+const CGSize  CGSizeNotChange  = {RFMathNotChange, RFMathNotChange};
+
 #pragma mark CGPoint
 CGPoint CGPointMid(CGPoint a, CGPoint b) {
 	return CGPointMake((a.x+b.x)/2, (a.y+b.y)/2);
