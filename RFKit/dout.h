@@ -2,7 +2,7 @@
 	Debug output kit(dout)
 	RFKit
 
-	ver 1.5.0
+	ver 1.5.1
  
     Copyright (c) 2012-2013 BB9z
     https://github.com/BB9z/RFKit
@@ -12,7 +12,7 @@
  */
 
 #ifndef _DOUT_H_
-#define _DOUT_H_ 1.5.0
+#define _DOUT_H_ 1.5.1
 
 #import "RFRuntime.h"
 
@@ -78,7 +78,7 @@
 #define doutp(...)      dout(@"%s -> %p", #__VA_ARGS__, (__VA_ARGS__))
 #define dout_bool(...)  dout(@"%s = %@", #__VA_ARGS__, ((BOOL)(__VA_ARGS__))? @"YES" : @"NO")
 #define dout_int(...)   dout(@"%s = %d", #__VA_ARGS__, ((int)(__VA_ARGS__)))
-#define dout_hex(...)   dout(@"%s = %#x", #__VA_ARGS__, ((int)(__VA_ARGS__)))
+#define dout_hex(...)   dout(@"%s = %#.8x", #__VA_ARGS__, ((int)(__VA_ARGS__)))
 #define dout_float(...) dout(@"%s = %f", #__VA_ARGS__, ((float)(__VA_ARGS__)))
 
 #define dout_point(...) dout(@"%s = %@", #__VA_ARGS__, NSStringFromCGPoint((CGPoint)(__VA_ARGS__)))
