@@ -2,17 +2,17 @@
 	Debug output kit(dout)
 	RFKit
 
-	ver 1.4.2
+	ver 1.5.0
  
     Copyright (c) 2012-2013 BB9z
-    https://github.com/bb9z/RFKit
+    https://github.com/BB9z/RFKit
 
     The MIT License (MIT)
     http://www.opensource.org/licenses/mit-license.php
  */
 
 #ifndef _DOUT_H_
-#define _DOUT_H_
+#define _DOUT_H_ 1.5.0
 
 #import "RFRuntime.h"
 
@@ -78,6 +78,7 @@
 #define doutp(...)      dout(@"%s -> %p", #__VA_ARGS__, (__VA_ARGS__))
 #define dout_bool(...)  dout(@"%s = %@", #__VA_ARGS__, ((BOOL)(__VA_ARGS__))? @"YES" : @"NO")
 #define dout_int(...)   dout(@"%s = %d", #__VA_ARGS__, ((int)(__VA_ARGS__)))
+#define dout_hex(...)   dout(@"%s = %#x", #__VA_ARGS__, ((int)(__VA_ARGS__)))
 #define dout_float(...) dout(@"%s = %f", #__VA_ARGS__, ((float)(__VA_ARGS__)))
 
 #define dout_point(...) dout(@"%s = %@", #__VA_ARGS__, NSStringFromCGPoint((CGPoint)(__VA_ARGS__)))
@@ -86,7 +87,7 @@
 
 #define doutwork()      dout(@"%s: It Works!", __FUNCTION__)
 #define douttrace()     dout(@"%s @%@", __PRETTY_FUNCTION__, [NSThread callStackSymbols])
-#define doutline()      dout("%s line:%d", __PRETTY_FUNCTION__, __LINE__)
+#define doutline()      dout(@"%s line:%d", __PRETTY_FUNCTION__, __LINE__)
 
 
 #pragma mark Log helper
@@ -176,6 +177,7 @@
 #define _doutp(...)
 #define _dout_bool(...)
 #define _dout_int(...)
+#define _dout_hex(...)
 #define _dout_float(...)
 #define _dout_point(...)
 #define _dout_size(...)
