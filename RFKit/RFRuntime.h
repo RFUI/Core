@@ -41,3 +41,29 @@
 #import "EXTKeyPathCoding.h"
 #import "EXTScope.h"
 //#import "EXTSwizzle.h"
+
+/**
+ \@keypathClassInstance allows compile-time verification of key paths. Similar to
+ \@keypath, but accept a class as parameter instead of a instance variable.
+ @code
+
+NSString *objectIDPath = @keypathClassInstance(NSManagedObject, objectID);
+// => @"objectID"
+
+NSString *footerViewFramePath = @keypathClassInstance(UITableView, tableFooterView, frame);
+// => @"frame"
+
+ @endcode
+ 
+ @bug In a class method, cannot use `self` as CLASS.
+ */
+
+#define keypathClassInstance(...)\
+    metamacro_if_eq(2, metamacro_argcount(__VA_ARGS__))(keypathClassInstance1(__VA_ARGS__))(keypathClassInstance2(__VA_ARGS__))
+
+#define keypathClassInstance1(CLASS, PATH)\
+    (({CLASS *_proxy_; ((void)(NO && ((void)_proxy_.PATH, NO)), # PATH);}))
+
+#define keypathClassInstance2(CLASS, PROPERTY, PATH)\
+    (({CLASS *_proxy_; ((void)(NO && ((void)_proxy_.PROPERTY.PATH, NO)), # PATH);}))
+
