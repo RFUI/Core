@@ -72,6 +72,7 @@ typedef enum {
 } RFCGRectChangeFlag;
 
 CGRect CGRectMakeWithPoints(CGPoint a, CGPoint b);
+CGRect CGRectMakeWithCenterAndSize(CGPoint centerPoint, CGSize rectSize);
 
 CGRect CGRectResize(CGRect original, CGSize newSize, RFResizeAnchor resizeAnchor);
 

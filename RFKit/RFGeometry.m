@@ -39,6 +39,12 @@ CGRect CGRectMakeWithPoints(CGPoint a, CGPoint b) {
     return CGRectMake(x, y, width, height);
 }
 
+CGRect CGRectMakeWithCenterAndSize(CGPoint centerPoint, CGSize rectSize) {
+    CGFloat x = centerPoint.x - rectSize.width/2;
+    CGFloat y = centerPoint.y - rectSize.height/2;
+    return (CGRect){{x, y}, rectSize};
+}
+
 CGRect CGRectResize(CGRect original, CGSize newSize, RFResizeAnchor resizeAnchor) {
     CGFloat x = original.origin.x;
     CGFloat y = original.origin.y;
