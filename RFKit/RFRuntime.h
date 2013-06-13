@@ -36,6 +36,7 @@
 #include "metamacros.h"
 #import "RFARC.h"
 #import "RFFeatureSupport.h"
+#import "RFDispatch.h"
 
 #pragma mark - ObjC Ext
 #import "EXTKeyPathCoding.h"
