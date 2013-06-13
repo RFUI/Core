@@ -278,4 +278,23 @@
     return nil;
 }
 
++ (instancetype)loadWithNibName:(NSString *)nibName bundle:(NSBundle *)nibBundle {
+    if (!nibName) {
+        nibName = NSStringFromClass([self class]);
+    }
+    if (!nibBundle) {
+        nibBundle = [NSBundle mainBundle];
+    }
+    for (id obj in [nibBundle loadNibNamed:nibName owner:nil options:nil]) {
+        if ([obj isKindOfClass:[self class]]) {
+            return obj;
+        }
+    }
+    return nil;
+}
+
++ (instancetype)loadWithNibName:(NSString *)nibName {
+    return [self loadWithNibName:nibName bundle:nil];
+}
+
 @end

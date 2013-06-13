@@ -126,4 +126,26 @@ typedef enum {
 */
 - (UIViewController *)viewController;
 
+/**
+ Return a newly view object unarchived from the nib file which located in the specified bundle.
+ 
+ @param nibName The name of the nib file to associate with the view. If nil, this method looks for the nib file which has  the same name with the class name. The nib file name should not contain any leading path information and the .nib extension.
+ 
+ @param nibBundle The bundle in which to search for the nib file. If nil, this method looks for the nib file in the main bundle.
+ 
+ @return A view object. May be nil if cannot find specified archived object.
+ */
++ (instancetype)loadWithNibName:(NSString *)nibName bundle:(NSBundle *)nibBundle;
+
+/**
+ Return a newly view object unarchived from the nib file which located in the main bundle.
+ 
+ @param nibName The name of the nib file to associate with the view. If nil, this method looks for the nib file which has  the same name with the class name. The nib file name should not contain any leading path information and the .nib extension.
+ 
+ @return A view object. May be nil if cannot find specified archived object.
+ 
+ @see loadWithNibName:bundle:
+ */
++ (instancetype)loadWithNibName:(NSString *)nibName;
+
 @end
