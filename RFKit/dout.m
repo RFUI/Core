@@ -62,5 +62,5 @@ void DoutLogString(NSString *string) {
         }
     }
 
-    printf("%s%s%s: %s\n", [traceFlag UTF8String], [timeString UTF8String], [threadFlag UTF8String], [string UTF8String]);
+    printf("%s\n", [[NSString stringWithFormat:@"%@%@%@: %@", traceFlag, timeString, threadFlag, string] UTF8String]);
 }
