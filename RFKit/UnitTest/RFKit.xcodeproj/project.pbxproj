@@ -634,6 +634,7 @@
 				GCC_PREFIX_HEADER = "RFKit/RFKit-Prefix.pch";
 				INFOPLIST_FILE = "RFKit/RFKit-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WARNING_CFLAGS = "-Weverything";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -645,6 +646,7 @@
 				GCC_PREFIX_HEADER = "RFKit/RFKit-Prefix.pch";
 				INFOPLIST_FILE = "RFKit/RFKit-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WARNING_CFLAGS = "-Weverything";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
