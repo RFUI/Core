@@ -40,27 +40,28 @@ void DoutLogString(NSString *string) {
     
     NSString *traceFlag = DOUT_TRACE_FORMATTER;
     NSString *timeString = [dateFormatter stringFromDate:[NSDate date]];
-    NSString *threadFlag;
-    if ([NSThread isMainThread]) {
-        threadFlag = @"";
-    }
-    else {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-        NSString *queueName = [NSString stringWithCString:dispatch_queue_get_label(dispatch_get_current_queue()) encoding:NSUTF8StringEncoding];
-#pragma clang diagnostic pop
-        NSString *threadName = [NSThread currentThread].name;
-        
-        if (threadName.length) {
-            threadFlag = [NSString stringWithFormat:@"(%@)", threadName];
-        }
-        else if (queueName.length) {
-            threadFlag = [NSString stringWithFormat:@"(%@)", queueName];
-        }
-        else {
-            threadFlag = [NSString stringWithFormat:@"(%p)", [NSThread currentThread]];
-        }
+    NSString *threadFlag = @"";
+    if (![NSThread isMainThread]) {
+        threadFlag = [NSString stringWithFormat:@"(%@)", DoutCurrentThreadOrQueueName()];
     }
 
     printf("%s\n", [[NSString stringWithFormat:@"%@%@%@: %@", traceFlag, timeString, threadFlag, string] UTF8String]);
+}
+
+NSString * DoutCurrentThreadOrQueueName(void) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+    NSString *queueName = [NSString stringWithCString:dispatch_queue_get_label(dispatch_get_current_queue()) encoding:NSUTF8StringEncoding];
+#pragma clang diagnostic pop
+    NSString *threadName = [NSThread currentThread].name;
+    
+    if (threadName.length) {
+        return threadName;
+    }
+    else if (queueName.length) {
+        return queueName;
+    }
+    else {
+        return [NSString stringWithFormat:@"%p", [NSThread currentThread]];
+    }
 }
