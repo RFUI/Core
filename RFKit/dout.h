@@ -2,7 +2,7 @@
 	Debug output kit(dout)
 	RFKit
 
-	ver 1.5.1
+	ver 2.0.0
  
     Copyright (c) 2012-2013 BB9z
     https://github.com/BB9z/RFKit
@@ -12,22 +12,11 @@
  */
 
 #ifndef _DOUT_H_
-#define _DOUT_H_ 1.5.1
+#define _DOUT_H_ 2.0
 
 #import "RFRuntime.h"
 
 #pragma mark - Config
-
-/** RFDebugLevel
-    It change dout behave.
- 
-    5   Info
-    4   
-    3   Show warning.
-    2   Debug mode, show error. Enable log output. Assert enable.
-    1   Default, won't log anything. For production environment.
-    0   Silent.
- */
 
 // If DOUT_ASSERT_AT_ERROR is enabled, DOUT_TREAT_ERROR_AS_EXCEPTION will not available.
 #ifndef DOUT_ASSERT_AT_ERROR
@@ -65,14 +54,18 @@
 #endif
 
 #pragma mark - Variables log helper
+#define DoutLog(...)\
+    DoutLogString(([NSString stringWithFormat: __VA_ARGS__]))
+
+
 /// main
 #define __dout(LV, ...)\
-    {if(RFDebugLevel >= LV) NSLog(@"%@", [DOUT_TRACE_FORMATTER stringByAppendingFormat:__VA_ARGS__]);}
+    {if(RFDebugLevel >= LV) DoutLog(__VA_ARGS__);}
 
-#define dout(...)       __dout(2, __VA_ARGS__)
+#define dout(...)       __dout(RFDebugLevelError, __VA_ARGS__)
 
 #define douts(string)\
-    {if(RFDebugLevel >= 2) NSLog(@"%@%@", DOUT_TRACE_FORMATTER, (string));}
+    {if(RFDebugLevel >= RFDebugLevelError) DoutLog((string));}
 
 #define douto(...)      dout(@"%s = <%@> %@", #__VA_ARGS__, [(NSObject *)(__VA_ARGS__) class], (__VA_ARGS__))
 #define doutp(...)      dout(@"%s -> %p", #__VA_ARGS__, (__VA_ARGS__))
@@ -92,36 +85,36 @@
 
 #pragma mark Log helper
 #ifndef dout_info
-    #define dout_info(...) __dout(5, @"<Info> %@", [NSString stringWithFormat:__VA_ARGS__])
+    #define dout_info(...) __dout(RFDebugLevelInfo, @"<Info> %@", [NSString stringWithFormat:__VA_ARGS__])
 #endif
 
 #ifndef dout_warning
     #if DOUT_ASSERT_AT_WANRNING
         #define dout_warning(...)\
-            {if (RFDebugLevel >= 3) NSAssert(false, __VA_ARGS__);}
+            {if (RFDebugLevel >= RFDebugLevelWarning) NSAssert(false, __VA_ARGS__);}
 
     #elif DOUT_TREAT_WANRNING_AS_EXCEPTION
         #define dout_warning(...)\
-            {if (RFDebugLevel >= 3) @throw [NSException exceptionWithName:@"DOUT Warning" reason:[NSString stringWithFormat:__VA_ARGS__] userInfo:nil];}
+            {if (RFDebugLevel >= RFDebugLevelWarning) @throw [NSException exceptionWithName:@"DOUT Warning" reason:[NSString stringWithFormat:__VA_ARGS__] userInfo:nil];}
 
     #else
         #define dout_warning(...)\
-            __dout(3, @"<Warning> %@", [NSString stringWithFormat:__VA_ARGS__])
+            __dout(RFDebugLevelWarning, @"<Warning> %@", [NSString stringWithFormat:__VA_ARGS__])
     #endif
 #endif
 
 #ifndef dout_error
     #if DOUT_ASSERT_AT_ERROR
         #define dout_error(...)\
-            {if (RFDebugLevel >= 2) NSAssert(false, __VA_ARGS__);}
+            {if (RFDebugLevel >= RFDebugLevelError) NSAssert(false, __VA_ARGS__);}
 
     #elif DOUT_TREAT_ERROR_AS_EXCEPTION
         #define dout_error(...)\
-            {if (RFDebugLevel >= 2) @throw [NSException exceptionWithName:@"DOUT Error" reason:[NSString stringWithFormat:__VA_ARGS__] userInfo:nil];}
+            {if (RFDebugLevel >= RFDebugLevelError) @throw [NSException exceptionWithName:@"DOUT Error" reason:[NSString stringWithFormat:__VA_ARGS__] userInfo:nil];}
 
     #else
         #define dout_error(...)\
-            __dout(2, @"<Error> %@", [NSString stringWithFormat:__VA_ARGS__]);
+            __dout(RFDebugLevelError, @"<Error> %@", [NSString stringWithFormat:__VA_ARGS__]);
     #endif
 #endif
 
@@ -190,6 +183,8 @@
 #define _dout_info(...)
 #define _dout_warning(...)
 #define _dout_error(...)
+
+FOUNDATION_EXPORT void DoutLogString(NSString *string);
 
 void _dout_log_config(void);
 
