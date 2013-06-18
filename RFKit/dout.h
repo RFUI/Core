@@ -47,7 +47,7 @@
  */
 #ifndef DOUT_TRACE_FORMATTER
 #	if DOUT_FALG_TRACE
-#		define DOUT_TRACE_FORMATTER [NSString stringWithFormat:@"%@:%d >> ", [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__]
+#		define DOUT_TRACE_FORMATTER [NSString stringWithFormat:@"[%@:%d] ", [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__]
 #	else
 #		define DOUT_TRACE_FORMATTER @""
 #	endif

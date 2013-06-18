@@ -30,7 +30,6 @@ void DoutLogString(NSString *string) {
         usingPrintf = [UIDevice currentDevice].isBeingDebugged;
         dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"HH':'mm':'ss'.'SSS"];
-
     });
     
     if (!usingPrintf) {
@@ -45,7 +44,7 @@ void DoutLogString(NSString *string) {
         threadFlag = [NSString stringWithFormat:@"(%@)", DoutCurrentThreadOrQueueName()];
     }
 
-    printf("%s\n", [[NSString stringWithFormat:@"%@%@%@: %@", traceFlag, timeString, threadFlag, string] UTF8String]);
+    printf("%s\n", [[NSString stringWithFormat:@"%@%@: %@%@", timeString, threadFlag, traceFlag, string] UTF8String]);
 }
 
 NSString * DoutCurrentThreadOrQueueName(void) {
