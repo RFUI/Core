@@ -2,7 +2,7 @@
 	Debug output kit(dout)
 	RFKit
 
-	ver 2.0.2
+	ver 2.1.0
  
     Copyright (c) 2012-2013 BB9z
     https://github.com/BB9z/RFKit
@@ -12,7 +12,7 @@
  */
 
 #ifndef _DOUT_H_
-#define _DOUT_H_ 2.0
+#define _DOUT_H_ 2.1
 
 #import "RFRuntime.h"
 
@@ -55,7 +55,7 @@
 
 #pragma mark - Variables log helper
 #define DoutLog(...)\
-    DoutLogString(([NSString stringWithFormat: __VA_ARGS__]))
+    DoutLogString(([DOUT_TRACE_FORMATTER stringByAppendingFormat: __VA_ARGS__]))
 
 
 /// main

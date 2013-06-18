@@ -37,14 +37,13 @@ void DoutLogString(NSString *string) {
         return;
     }
     
-    NSString *traceFlag = DOUT_TRACE_FORMATTER;
     NSString *timeString = [dateFormatter stringFromDate:[NSDate date]];
     NSString *threadFlag = @"";
     if (![NSThread isMainThread]) {
         threadFlag = [NSString stringWithFormat:@"(%@)", DoutCurrentThreadOrQueueName()];
     }
 
-    printf("%s\n", [[NSString stringWithFormat:@"%@%@: %@%@", timeString, threadFlag, traceFlag, string] UTF8String]);
+    printf("%s\n", [[NSString stringWithFormat:@"%@%@: %@", timeString, threadFlag, string] UTF8String]);
 }
 
 NSString * DoutCurrentThreadOrQueueName(void) {
