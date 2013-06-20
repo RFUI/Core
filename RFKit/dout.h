@@ -2,7 +2,7 @@
 	Debug output kit(dout)
 	RFKit
 
-	ver 2.1.0
+	ver 2.1.1
  
     Copyright (c) 2012-2013 BB9z
     https://github.com/BB9z/RFKit
@@ -184,7 +184,7 @@
 #define _dout_warning(...)
 #define _dout_error(...)
 
-FOUNDATION_EXPORT void DoutLogString(NSString *string);
+void DoutLogString(NSString *string);
 NSString * DoutCurrentThreadOrQueueName(void);
 void _dout_log_config(void);
 
