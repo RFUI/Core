@@ -16,7 +16,7 @@
 /** Get a NSURL object of the specified directory in an search path directory.
  
  @param pathComponent
-     The path component of the sub directory.
+     The path component of the sub directory. May be nil.
  
  @param directory
      The search path directory. The supported values are described in NSSearchPathDirectory.

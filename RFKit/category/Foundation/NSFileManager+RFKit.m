@@ -7,7 +7,7 @@
 - (NSURL *)subDirectoryURLWithPathComponent:(NSString *)pathComponent inDirectory:(NSSearchPathDirectory)directory createIfNotExist:(BOOL)createIfNotExist error:(NSError *__autoreleasing *)error {
 
     NSURL *parentDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:directory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:error];
-    NSURL *directoryURL = [parentDirectoryURL URLByAppendingPathComponent:pathComponent];
+    NSURL *directoryURL = [parentDirectoryURL URLByAppendingPathComponent:pathComponent? pathComponent : @""];
     
     BOOL isDirectory = YES;
     if ([self fileExistsAtPath:[directoryURL path] isDirectory:&isDirectory]) {
