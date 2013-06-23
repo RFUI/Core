@@ -4,6 +4,29 @@
 
 @implementation NSFileManager (RFKit)
 
+- (NSURL *)subDirectoryURLWithPathComponent:(NSString *)pathComponent inDirectory:(NSSearchPathDirectory)directory createIfNotExist:(BOOL)createIfNotExist error:(NSError *__autoreleasing *)error {
+
+    NSURL *parentDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:directory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:error];
+    NSURL *directoryURL = [parentDirectoryURL URLByAppendingPathComponent:pathComponent];
+    
+    BOOL isDirectory = YES;
+    if ([self fileExistsAtPath:[directoryURL path] isDirectory:&isDirectory]) {
+        if (!isDirectory) {
+            *error = [NSError errorWithDomain:@"com.github.RFKit.NSFileManager" code:-1 userInfo:@{ NSLocalizedDescriptionKey : @"A file already exists at the loaction." }];
+            return nil;
+        }
+    }
+
+    if (createIfNotExist) {
+        if (![self createDirectoryAtURL:directoryURL withIntermediateDirectories:YES attributes:nil error:error]) {
+            return nil;
+        }
+    }
+
+    return directoryURL;
+}
+
+
 - (NSArray *)subDirectoryOfDirectoryAtPath:(NSString *)path error:(NSError *__autoreleasing *)error{
 	NSMutableArray * sub = [[self contentsOfDirectoryAtPath:path error:error] mutableCopy];
 	_douto(sub)

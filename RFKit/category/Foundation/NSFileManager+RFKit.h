@@ -12,6 +12,25 @@
 #import <Foundation/Foundation.h>
 
 @interface NSFileManager (RFKit)
+
+/** Get a NSURL object of the specified directory in an search path directory.
+ 
+ @param pathComponent
+     The path component of the sub directory.
+ 
+ @param directory
+     The search path directory. The supported values are described in NSSearchPathDirectory.
+ 
+ @param createIfNotExist
+     If `YES`, the directory and it´s any non-existent parent directories will be creat. If `NO`, only return the url.
+ 
+ @param error
+     If an error occurs, upon return contains an NSError object that describes the problem. Pass NULL if you do not want error information.
+ 
+ @return A URL pointing to the directory, or nil if the url is a file or error occurs.
+ */
+- (NSURL *)subDirectoryURLWithPathComponent:(NSString *)pathComponent inDirectory:(NSSearchPathDirectory)directory createIfNotExist:(BOOL)createIfNotExist error:(NSError *__autoreleasing *)erro;
+
 - (NSArray *)subDirectoryOfDirectoryAtPath:(NSString *)path error:(NSError *__autoreleasing *)erro;
 
 /** Performs a deep search of the specified directory and returns URLs for the contained items which has given file extension.
