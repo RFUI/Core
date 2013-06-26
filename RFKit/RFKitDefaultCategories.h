@@ -21,7 +21,7 @@
 #import "NSString+RFKit.h"
 //#import "NSURL+RFKit.h"
 
-//#import "UIAlertView+RFKit.h"
+#import "UIAlertView+RFKit.h"
 #import "UIButton+RFKit.h"
 #import "UIColor+RFKit.h"
 #import "UIDevice+RFKit.h"
