@@ -12,7 +12,7 @@
 #ifndef _RFUIInterfaceOrientationSupport_
 #define _RFUIInterfaceOrientationSupport_
 
-// iPhone AllButUpsideDown
+// iPhone Only Portrait, no upside down
 // iPad All
 #define RFUIInterfaceOrientationSupportDefault \
     - (BOOL)shouldAutorotate {\
@@ -21,7 +21,7 @@
     \
     - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {\
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {\
-            return UIInterfaceOrientationIsPortrait(toInterfaceOrientation);\
+            return (toInterfaceOrientation == UIInterfaceOrientationPortrait);\
         }\
         else {\
             return YES;\
@@ -30,14 +30,14 @@
     \
     - (NSUInteger)supportedInterfaceOrientations {\
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {\
-            return UIInterfaceOrientationMaskAllButUpsideDown;\
+            return UIInterfaceOrientationMaskPortrait;\
         }\
         else {\
             return UIInterfaceOrientationMaskAll;\
         }\
     }
 
-// iPhone Only Portrait
+// iPhone Only Portrait, no upside down
 // iPad Portrait + PortraitUpsideDown
 #define RFUIInterfaceOrientationSupportPortrait \
     - (BOOL)shouldAutorotate {\
@@ -46,7 +46,7 @@
     \
     - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {\
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {\
-            return UIInterfaceOrientationPortrait == toInterfaceOrientation;\
+            return (UIInterfaceOrientationPortrait == toInterfaceOrientation);\
         }\
         else {\
             return UIInterfaceOrientationIsPortrait(toInterfaceOrientation);\
@@ -76,18 +76,28 @@
         return UIInterfaceOrientationMaskLandscape;\
     }
 
-// All
+// All, except PortraitUpsideDown on iPhone
 #define RFUIInterfaceOrientationSupportAll \
     - (BOOL)shouldAutorotate {\
         return YES;\
     }\
     \
     - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {\
-        return YES;\
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {\
+            return (UIInterfaceOrientationPortraitUpsideDown != toInterfaceOrientation);\
+        }\
+        else {\
+            return YES;\
+        }\
     }\
     \
     - (NSUInteger)supportedInterfaceOrientations {\
-        return UIInterfaceOrientationMaskAll;\
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {\
+            return UIInterfaceOrientationMaskAllButUpsideDown;\
+        }\
+        else {\
+            return UIInterfaceOrientationMaskAll;\
+        }\
     }
 
 #define _RFUIInterfaceOrientationSupportDefault
