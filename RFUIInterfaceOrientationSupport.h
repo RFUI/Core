@@ -92,6 +92,7 @@
 #pragma mark -
 
 // Let navigation controller rotate according to current view controller
+// May not fallback to topViewController on iOS 5.
 #define RFUIInterfaceOrientationSupportNavigation \
     - (BOOL)shouldAutorotate {\
         return [self.topViewController shouldAutorotate];\
@@ -99,11 +100,8 @@
     \
     - (NSUInteger)supportedInterfaceOrientations {\
         return [self.topViewController supportedInterfaceOrientations];\
-    }\
-    \
-    - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {\
-        return [self.topViewController shouldAutorotateToInterfaceOrientation:toInterfaceOrientation];\
     }
+
 
 #pragma mark -
 
