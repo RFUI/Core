@@ -91,10 +91,28 @@
 
 #pragma mark -
 
+// Let navigation controller rotate according to current view controller
+#define RFUIInterfaceOrientationSupportNavigation \
+    - (BOOL)shouldAutorotate {\
+        return [self.topViewController shouldAutorotate];\
+    }\
+    \
+    - (NSUInteger)supportedInterfaceOrientations {\
+        return [self.topViewController supportedInterfaceOrientations];\
+    }\
+    \
+    - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {\
+        return [self.topViewController shouldAutorotateToInterfaceOrientation:toInterfaceOrientation];\
+    }
+
+#pragma mark -
+
 // For disable
 #define _RFUIInterfaceOrientationSupportDefault
 #define _RFUIInterfaceOrientationSupportPortrait
 #define _RFUIInterfaceOrientationSupportLandscape
 #define _RFUIInterfaceOrientationSupportAll
+
+#define _RFUIInterfaceOrientationSupportNavigation
 
 #endif
