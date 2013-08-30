@@ -67,6 +67,34 @@
     dout_int(@"Info")
     dout_warning(@"W %@", str1)
     dout_error(@"E %d", a)
+    
+    _dout(@"%@, %d", str1, a)
+    _douts(str1)
+    _douto(str1)
+    _doutp(str1)
+    
+    _dout_bool(YES)
+    _dout_bool(NO)
+    _dout_bool(true)
+    _dout_bool(false)
+    
+    _dout_int(a)
+    _dout_hex(0)
+    _dout_hex(0x1234)
+    _dout_hex(a)
+    
+    _dout_float(a)
+    _dout_point(CGPointMake(12, 34))
+    _dout_size(CGSizeMake(56, 78))
+    _dout_rect(CGRectMake(1, 2, 3, 4))
+    
+    _doutwork()
+    _douttrace()
+    _doutline()
+    
+    _dout_int(@"Info")
+    _dout_warning(@"W %@", str1)
+    _dout_error(@"E %d", a)
 }
 
 #define __dout(LV, ...)\
