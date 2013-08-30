@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D52492E117D043030069D13E /* NSDateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D52492E017D043030069D13E /* NSDateTests.m */; };
 		D5A58193176E137500401423 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5A58192176E137500401423 /* UIKit.framework */; };
 		D5A58195176E137500401423 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5A58194176E137500401423 /* Foundation.framework */; };
 		D5A58197176E137500401423 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5A58196176E137500401423 /* CoreGraphics.framework */; };
@@ -70,6 +71,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D52492DF17D043030069D13E /* NSDateTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDateTests.h; sourceTree = "<group>"; };
+		D52492E017D043030069D13E /* NSDateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDateTests.m; sourceTree = "<group>"; };
 		D5A5818F176E137500401423 /* RFKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RFKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5A58192176E137500401423 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D5A58194176E137500401423 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -194,6 +197,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D52492DE17D042E90069D13E /* NSDate */ = {
+			isa = PBXGroup;
+			children = (
+				D52492DF17D043030069D13E /* NSDateTests.h */,
+				D52492E017D043030069D13E /* NSDateTests.m */,
+			);
+			path = NSDate;
+			sourceTree = "<group>";
+		};
 		D5A58186176E137500401423 = {
 			isa = PBXGroup;
 			children = (
@@ -416,6 +428,7 @@
 		D5C057CC1776EA8B00BBBD56 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				D52492DE17D042E90069D13E /* NSDate */,
 				D5C057D91776EB2200BBBD56 /* NSFileManager */,
 			);
 			path = Foundation;
@@ -599,6 +612,7 @@
 				D5C057EC1776ED2700BBBD56 /* JRSwizzle.m in Sources */,
 				D5C057EE1776ED2700BBBD56 /* NSObject+RACKVOWrapper.m in Sources */,
 				D5C057EF1776ED2700BBBD56 /* RACSwizzling.m in Sources */,
+				D52492E117D043030069D13E /* NSDateTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,6 +16,13 @@
 + (NSDate *)dateWithYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day hour:(NSInteger)hour minute:(NSInteger)minute second:(NSInteger)second;
 + (NSDate *)dateWithYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day;
 
+/**
+ @abstract Returns a Boolean value that indicates whether the receiver and a given date object are the same day.
+ 
+ @param date The date object to be compared to the receiver.
+ 
+ @return `YES` if the receiver and anObject are the same day, otherwise `NO`.
+ */
 - (BOOL)isSameDayWithDate:(NSDate *)date;
 
 /**
@@ -26,6 +33,6 @@
  
  @return The number of calendar days between two dates.
  */
-+ (NSInteger)daysBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime;
++ (NSInteger)daysBetweenDate:(NSDate *)fromDateTime andDate:(NSDate *)toDateTime;
 
 @end
