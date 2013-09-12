@@ -192,6 +192,14 @@
 	[self.superview exchangeSubviewAtIndex:[self siblingIndex] withSubviewAtIndex:[swapView siblingIndex]];
 }
 
+- (UIView *)superviewOfClass:(Class)class {
+    UIView *ctView = self.superview;
+    while (![ctView isKindOfClass:class]) {
+        ctView = ctView.superview;
+    }
+    return ctView;
+}
+
 #pragma mark - Others
 
 - (BOOL)isVisible {
