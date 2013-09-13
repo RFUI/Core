@@ -56,4 +56,12 @@
     
 }
 
+- (NSString *)extractedHTMLContent {
+    NSError __autoreleasing *e = nil;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"<(?:\"[^\"]*\"['\"]*|'[^']*'['\"]*|[^'\">])+>" options:NSRegularExpressionDotMatchesLineSeparators error:&e];
+    if (e) dout_error(@"%@", e);
+    douto(regex)
+    return [regex stringByReplacingMatchesInString:self options:0 range:NSMakeRange(0, self.length) withTemplate:@""];
+}
+
 @end

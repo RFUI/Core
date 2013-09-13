@@ -35,6 +35,9 @@
  */
 - (NSString *)stringTrimToWidthLength:(CGFloat)length WithFont:(UIFont *)font;
 
-
+/**
+ Remove HTML tags in receiver’s.
+ */
+- (NSString *)extractedHTMLContent;
 
 @end
