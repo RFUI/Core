@@ -77,7 +77,7 @@
  @code
 
 // If you had to add another init method.
-- (id)initWithSomething:(id)some {
+- (instancetype)initWithSomething:(id)some {
     self = [super init];
     if (self) {
         // Don't call onInit or afterInit.
@@ -115,7 +115,7 @@
 
 #ifndef RFInitializingRootForUIView
 #define RFInitializingRootForUIView \
-    - (id)init {\
+    - (instancetype)init {\
         self = [super init];\
         if (self) {\
             [self onInit];\
@@ -123,7 +123,7 @@
         }\
         return self;\
     }\
-    - (id)initWithFrame:(CGRect)frame {\
+    - (instancetype)initWithFrame:(CGRect)frame {\
         self = [super initWithFrame:frame];\
         if (self) {\
             [self onInit];\
@@ -131,7 +131,7 @@
         }\
         return self;\
     }\
-    - (id)initWithCoder:(NSCoder *)aDecoder {\
+    - (instancetype)initWithCoder:(NSCoder *)aDecoder {\
         self = [super initWithCoder:aDecoder];\
         if (self) {\
             [self onInit];\
