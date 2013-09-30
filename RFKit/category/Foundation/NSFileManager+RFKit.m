@@ -10,11 +10,11 @@
     NSURL *directoryURL = [parentDirectoryURL URLByAppendingPathComponent:pathComponent? pathComponent : @""];
     
     BOOL isDirectory = YES;
-    if ([self fileExistsAtPath:[directoryURL path] isDirectory:&isDirectory]) {
-        if (!isDirectory) {
+    if ([self fileExistsAtPath:[directoryURL path] isDirectory:&isDirectory] && isDirectory) {
+        if (error) {
             *error = [NSError errorWithDomain:@"com.github.RFKit.NSFileManager" code:-1 userInfo:@{ NSLocalizedDescriptionKey : @"A file already exists at the loaction." }];
-            return nil;
         }
+        return nil;
     }
 
     if (createIfNotExist) {
