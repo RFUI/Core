@@ -32,8 +32,8 @@
 	
 	BOOL isDir = false;
 	NSString * tmpPath = nil;
-	for (int i = [sub count]-1; i>=0; i--) {
-		tmpPath = [path stringByAppendingPathComponent:[sub objectAtIndex:i]];
+	for (NSInteger i = sub.count - 1; i >= 0; i--) {
+		tmpPath = [path stringByAppendingPathComponent:sub[i]];
 		
 		if ([self fileExistsAtPath:tmpPath isDirectory:&isDir] && isDir) {
 			[sub replaceObjectAtIndex:i withObject:tmpPath];
