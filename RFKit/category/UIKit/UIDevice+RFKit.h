@@ -10,7 +10,6 @@
  */
 
 #import "RFRuntime.h"
-#import <Availability.h>
 
 @interface UIDevice (RFKit)
 
