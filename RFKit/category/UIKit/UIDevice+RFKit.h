@@ -2,8 +2,8 @@
     UIDevice extension
     RFKit
 
-    Copyright (c) 2012-2013 BB9z
-    https://github.com/bb9z/RFKit
+    Copyright (c) 2012-2014 BB9z
+    https://github.com/BB9z/RFKit
 
     The MIT License (MIT)
     http://www.opensource.org/licenses/mit-license.php
@@ -23,9 +23,12 @@
 - (BOOL)isRetinaDisplay;
 
 
-/// Get device's mac address
 //! via: http://iphonedevelopertips.com/device/determine-mac-address.html
-- (NSString *)macAddress;
+/** Get device's mac address
+ 
+ @warning You cannt get a correct mac address on iOS 7. Do not use this any more. More: https://developer.apple.com/news/?id=8222013a
+ */
+- (NSString *)macAddress DEPRECATED_ATTRIBUTE;
 
 /// Returns `YES` if the current process is being debugged (either running under the debugger or has a debugger attached post facto).
 //! via: https://developer.apple.com/library/mac/#qa/qa1361/_index.html
@@ -33,12 +36,5 @@
 
 - (long long)fileSystemFreeSize;
 - (long long)fileSystemSize;
-
-#pragma mark - DEPRECATED class methods
-+ (BOOL)isPad DEPRECATED_ATTRIBUTE;
-+ (BOOL)isRetinaDisplay DEPRECATED_ATTRIBUTE;
-+ (NSString *)macAddress DEPRECATED_ATTRIBUTE;
-+ (long long)fileSystemFreeSize DEPRECATED_ATTRIBUTE;
-+ (long long)fileSystemSize DEPRECATED_ATTRIBUTE;
 
 @end
