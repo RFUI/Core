@@ -2,8 +2,8 @@
     NSArray extension
     RFKit
 
-    Copyright (c) 2012-2013 BB9z
-    https://github.com/bb9z/RFKit
+    Copyright (c) 2012-2014 BB9z
+    https://github.com/BB9z/RFKit
 
     The MIT License (MIT)
     http://www.opensource.org/licenses/mit-license.php
@@ -15,5 +15,11 @@
 @end
 
 @interface NSMutableArray (RFKit)
-- (void)addObjectsFromDictionary:(NSDictionary *)otherDictionary keys:(NSString *)firstKey, ...NS_REQUIRES_NIL_TERMINATION;
+
+/** Filter a given dictionary with specified keys and adds these objects to the end of the receiving array’s content.
+
+ @param otherDictionary The dictionary from which to add entries
+ @param firstKey, ... Keys specifying which object will be added to the reciver.
+ */
+- (void)addObjectsFromDictionary:(NSDictionary *)otherDictionary withSpecifiedKeys:(NSString *)firstKey, ...NS_REQUIRES_NIL_TERMINATION;
 @end
