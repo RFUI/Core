@@ -12,7 +12,6 @@
 #import "RFRuntime.h"
 
 @interface UIViewController (RFKit)
-- (void)setNavTitle:(NSString *)title back:(NSString *)backTitle;
 
 /** Return a view which can present another view controller.
  
@@ -42,4 +41,6 @@
  @discussion You can use this method to dismiss keyboard even the first responder not belong to the reciver.
  */
 - (void)dismissKeyboard;
+
+- (void)setNavTitle:(NSString *)title back:(NSString *)backTitle DEPRECATED_ATTRIBUTE;
 @end
