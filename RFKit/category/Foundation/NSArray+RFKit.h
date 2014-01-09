@@ -18,8 +18,8 @@
 
 /** Filter a given dictionary with specified keys and adds these objects to the end of the receiving array’s content.
 
- @param otherDictionary The dictionary from which to add entries
+ @param sourceDictionary The dictionary from which to add entries
  @param firstKey, ... Keys specifying which object will be added to the reciver.
  */
-- (void)addObjectsFromDictionary:(NSDictionary *)otherDictionary withSpecifiedKeys:(NSString *)firstKey, ...NS_REQUIRES_NIL_TERMINATION;
+- (void)addObjectsFromDictionary:(NSDictionary *)sourceDictionary withSpecifiedKeys:(NSString *)firstKey, ...NS_REQUIRES_NIL_TERMINATION;
 @end
