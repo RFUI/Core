@@ -261,6 +261,10 @@
     return [self.window convertRect:frameInWindow toWindow:nil];
 }
 
+- (CGRect)boundsInView:(UIView *)view {
+    return [self convertRect:self.bounds toView:view];
+}
+
 - (UIImage *)renderToImage {
     UIGraphicsBeginImageContextWithOptions(self.bounds.size, self.opaque, [[UIScreen mainScreen] scale]);
     [self.layer renderInContext:UIGraphicsGetCurrentContext()];

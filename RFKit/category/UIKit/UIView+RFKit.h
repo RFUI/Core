@@ -108,6 +108,12 @@ typedef enum {
  */
 - (CGRect)frameOnScreen;
 
+/** Converts the receiver’s bounds from the receiver’s coordinate system to that of the specified view.
+
+ @return The converted rectangle.
+ */
+- (CGRect)boundsInView:(UIView *)view;
+
 - (UIImage *)renderToImage;
 
 - (CGFloat)distanceBetweenFrameBottomAndSuperviewBottom;
