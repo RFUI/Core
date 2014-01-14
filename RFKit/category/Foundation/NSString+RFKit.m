@@ -13,6 +13,14 @@
     return RF_AUTORELEASE(string);
 }
 
+- (BOOL)containsString:(NSString *)string {
+    return ([self rangeOfString:string].location != NSNotFound);
+}
+
+- (BOOL)containsString:(NSString *)string options:(NSStringCompareOptions)mask {
+    return ([self rangeOfString:string options:mask].location != NSNotFound);
+}
+
 - (NSString *)reverseString {
 	NSMutableString *reversedStr;
 	NSUInteger len = self.length;
