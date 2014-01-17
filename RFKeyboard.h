@@ -2,7 +2,7 @@
     RFKeyboard
     RFUI
 
-    Copyright (c) 2012-2013 BB9z
+    Copyright (c) 2012-2014 BB9z
     https://github.com/RFUI/Core
 
     The MIT License (MIT)
@@ -29,4 +29,7 @@
  @return `YES` if the keyboard is undocked, `NO` if the keyboard is dock at screen bottom.
  */
 + (BOOL)isUndocked:(CGRect)keyboardRect;
+
+// experimental
++ (void)setEnableAutoDisimssKeyboardWhenTouch:(BOOL)enabled;
 @end
