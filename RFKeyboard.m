@@ -1,7 +1,9 @@
 
 #import "RFKeyboard.h"
 
-@interface RFKeyboard ()
+@interface RFKeyboard () <
+    UIGestureRecognizerDelegate
+>
 @property (strong, nonatomic) UITapGestureRecognizer *tapInWindowGestureRecognizer;
 @property (strong, nonatomic) UIPanGestureRecognizer *panInWindowGestureRecognizer;
 @property (strong, nonatomic) id keyboardShowObserver;
@@ -86,6 +88,14 @@
     return (self.keyboardHideObserver && self.keyboardShowObserver);
 }
 
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch{
+    if ([touch.view isMemberOfClass:[UIView class]]) {
+        return YES;
+    }
+    
+    return NO;
+}
+
 - (void)setupKeyWindowGestureRecognizers {
     if (self.tapInWindowGestureRecognizer.view && self.panInWindowGestureRecognizer.view) {
         return;
@@ -94,12 +104,14 @@
     if (!self.tapInWindowGestureRecognizer) {
         self.tapInWindowGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTouchInKeyWindow:)];
         self.tapInWindowGestureRecognizer.enabled = NO;
+        self.tapInWindowGestureRecognizer.delegate = self;
     }
 
     if (!self.panInWindowGestureRecognizer) {
         self.panInWindowGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onTouchInKeyWindow:)];
         self.panInWindowGestureRecognizer.maximumNumberOfTouches = 1;
         self.panInWindowGestureRecognizer.enabled = NO;
+        self.panInWindowGestureRecognizer.delegate = self;
     }
 
     if (![self tryAddGestureRecognizerToKeyWindow]) {
