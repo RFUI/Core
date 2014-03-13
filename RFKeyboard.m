@@ -1,5 +1,7 @@
 
 #import "RFKeyboard.h"
+#import "dout.h"
+
 
 @interface RFKeyboard () <
     UIGestureRecognizerDelegate
@@ -134,7 +136,8 @@
 }
 
 - (void)onTouchInKeyWindow:(UIGestureRecognizer *)sender {
-    [[UIApplication sharedApplication].keyWindow.rootViewController dismissKeyboard];
+    // Dismiss keyboard
+    [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
 }
 
 @end

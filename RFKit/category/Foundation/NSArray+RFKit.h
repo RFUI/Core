@@ -19,7 +19,7 @@
 /** Filter a given dictionary with specified keys and adds these objects to the end of the receiving array’s content.
 
  @param sourceDictionary The dictionary from which to add entries
- @param firstKey, ... Keys specifying which object will be added to the reciver.
+ @param firstKey ... Keys specifying which object will be added to the reciver.
  */
 - (void)addObjectsFromDictionary:(NSDictionary *)sourceDictionary withSpecifiedKeys:(NSString *)firstKey, ...NS_REQUIRES_NIL_TERMINATION;
 @end

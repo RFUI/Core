@@ -27,7 +27,7 @@
 /** Adds to the receiving dictionary the entries from another dictionary with specified keys.
 
  @param sourceDictionary The dictionary from which to add entries.
- @param firstKey, ... Keys specifying which entry will be added to the reciver.
+ @param firstKey ... Keys specifying which entry will be added to the reciver.
  */
 - (NSUInteger)addEntriesFromDictionary:(NSDictionary *)sourceDictionary withSpecifiedKeys:(NSString *)firstKey, ... NS_REQUIRES_NIL_TERMINATION;
 
