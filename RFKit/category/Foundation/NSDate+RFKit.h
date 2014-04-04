@@ -33,4 +33,6 @@
  */
 + (NSInteger)daysBetweenDate:(NSDate *)fromDateTime andDate:(NSDate *)toDateTime;
 
+- (NSDate *)startTimeOfDate;
+- (NSDate *)endTimeOfDate;
 @end
