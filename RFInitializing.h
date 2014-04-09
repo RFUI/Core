@@ -113,6 +113,18 @@
 - (void)afterInit;
 @end
 
+#ifndef RFInitializingRootForNSObject
+#define RFInitializingRootForNSObject \
+    - (instancetype)init {\
+        self = [super init];\
+        if (self) {\
+            [self onInit];\
+            [self performSelector:@selector(afterInit) withObject:self afterDelay:0];\
+        }\
+        return self;\
+    }
+#endif
+
 #ifndef RFInitializingRootForUIView
 #define RFInitializingRootForUIView \
     - (instancetype)init {\
