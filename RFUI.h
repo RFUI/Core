@@ -13,6 +13,7 @@
 
 #import "RFKit.h"
 #import "RFUIDebug.h"
+#import "RFInitializing.h"
 #import "RFUIInterfaceOrientationSupport.h"
 #import "RFKeyboard.h"
 
