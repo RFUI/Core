@@ -2,7 +2,7 @@
 	Debug output kit(dout)
 	RFKit
 
-	ver 2.2
+	ver 2.3
  
     Copyright (c) 2012-2014 BB9z
     https://github.com/BB9z/RFKit
@@ -12,7 +12,7 @@
  */
 
 #ifndef _DOUT_H_
-#define _DOUT_H_ 2.2
+#define _DOUT_H_ 2.3
 
 #import "RFRuntime.h"
 
@@ -83,6 +83,11 @@
 #define doutline()      dout(@"%s line:%d", __PRETTY_FUNCTION__, __LINE__)
 
 #pragma mark Log helper
+
+#ifndef dout_debug
+    #define dout_debug(...) __dout(RFDebugLevelVerbose, @"<Debug> %@", [NSString stringWithFormat:__VA_ARGS__])
+#endif
+
 #ifndef dout_info
     #define dout_info(...) __dout(RFDebugLevelInfo, @"<Info> %@", [NSString stringWithFormat:__VA_ARGS__])
 #endif
@@ -180,6 +185,7 @@
 #define _douttrace(...)
 #define _doutline(...)
 
+#define _dout_debug(...)
 #define _dout_info(...)
 #define _dout_warning(...)
 #define _dout_error(...)
