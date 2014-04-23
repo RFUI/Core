@@ -42,5 +42,4 @@
  */
 - (void)dismissKeyboard;
 
-- (void)setNavTitle:(NSString *)title back:(NSString *)backTitle DEPRECATED_ATTRIBUTE;
 @end
