@@ -58,7 +58,9 @@
                     [self setupKeyWindowGestureRecognizers];
                 }
 
+                @weakify(self);
                 self.keyboardShowObserver = [[NSNotificationCenter defaultCenter] addObserverForName:UIKeyboardWillShowNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
+                    @strongify(self);
                     CGRect frame = [note.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
                     if (![RFKeyboard isUndocked:frame]) {
                         return;
@@ -66,8 +68,10 @@
 
                     self.tapInWindowGestureRecognizer.enabled = YES;
                     self.panInWindowGestureRecognizer.enabled = YES;
+                    [self tryAddGestureRecognizerToKeyWindow];
                 }];
                 self.keyboardHideObserver = [[NSNotificationCenter defaultCenter] addObserverForName:UIKeyboardWillHideNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
+                    @strongify(self);
                     self.tapInWindowGestureRecognizer.enabled = NO;
                     self.panInWindowGestureRecognizer.enabled = NO;
                 }];
@@ -90,12 +94,16 @@
     return (self.keyboardHideObserver && self.keyboardShowObserver);
 }
 
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch{
-    if ([touch.view isMemberOfClass:[UIView class]]) {
-        return YES;
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    if ([touch.view isKindOfClass:[UIControl class]]) {
+        return NO;
     }
-    
-    return NO;
+
+    if ([touch.view isKindOfClass:[UINavigationBar class]]) {
+        return NO;
+    }
+
+    return YES;
 }
 
 - (void)setupKeyWindowGestureRecognizers {
@@ -104,16 +112,20 @@
     }
 
     if (!self.tapInWindowGestureRecognizer) {
-        self.tapInWindowGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTouchInKeyWindow:)];
-        self.tapInWindowGestureRecognizer.enabled = NO;
-        self.tapInWindowGestureRecognizer.delegate = self;
+        UITapGestureRecognizer *gr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTouchInKeyWindow:)];
+        gr.enabled = NO;
+        gr.cancelsTouchesInView = NO;
+        gr.delegate = self;
+        self.tapInWindowGestureRecognizer = gr;
     }
 
     if (!self.panInWindowGestureRecognizer) {
-        self.panInWindowGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onTouchInKeyWindow:)];
-        self.panInWindowGestureRecognizer.maximumNumberOfTouches = 1;
-        self.panInWindowGestureRecognizer.enabled = NO;
-        self.panInWindowGestureRecognizer.delegate = self;
+        UIPanGestureRecognizer *gr = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onTouchInKeyWindow:)];
+        gr.maximumNumberOfTouches = 1;
+        gr.enabled = NO;
+        gr.cancelsTouchesInView = NO;
+        gr.delegate = self;
+        self.panInWindowGestureRecognizer = gr;
     }
 
     if (![self tryAddGestureRecognizerToKeyWindow]) {
@@ -126,10 +138,10 @@
 }
 
 - (BOOL)tryAddGestureRecognizerToKeyWindow {
-    UIApplication *ap = [UIApplication sharedApplication];
-    if (ap.keyWindow) {
-        [ap.keyWindow addGestureRecognizer:self.tapInWindowGestureRecognizer];
-        [ap.keyWindow addGestureRecognizer:self.panInWindowGestureRecognizer];
+    UIWindow *target = [UIApplication sharedApplication].keyWindow;
+    if (target) {
+        [target addGestureRecognizer:self.tapInWindowGestureRecognizer];
+        [target addGestureRecognizer:self.panInWindowGestureRecognizer];
         return YES;
     }
     return NO;
