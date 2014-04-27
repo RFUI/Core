@@ -17,7 +17,7 @@
  
  @param keyboardRect Keyboard frame rect, usually from an UIKeyboard notification´s userinfo[UIKeyboardFrameEndUserInfoKey].
  
- @return The converted keyboard frame rectangle in view ´s coordinate system.
+ @return The converted keyboard frame rectangle in view ´s coordinate system. Must not be nil.
  */
 + (CGRect)convertKeyboardFrame:(CGRect)keyboardRect toView:(UIView *)view;
 
@@ -29,6 +29,8 @@
  @return `YES` if the keyboard is undocked, `NO` if the keyboard is dock at screen bottom.
  */
 + (BOOL)isUndocked:(CGRect)keyboardRect;
+
++ (CGFloat)keyboardLayoutHeightForNotification:(NSNotification *)note inView:(UIView *)view;
 
 // experimental
 + (void)setEnableAutoDisimssKeyboardWhenTouch:(BOOL)enabled;

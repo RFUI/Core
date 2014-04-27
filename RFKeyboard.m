@@ -35,6 +35,20 @@
     return (zeroCount != 2)? YES : NO;
 }
 
++ (CGFloat)keyboardLayoutHeightForNotification:(NSNotification *)note inView:(UIView *)view {
+    if (!note.userInfo[UIKeyboardFrameEndUserInfoKey]) {
+        dout_warning(@"Cannot get keyboard frame info for %@", note);
+        return -1;
+    }
+    CGRect frame = [note.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    if (![RFKeyboard isUndocked:frame]) {
+        return 0;
+    }
+
+    CGRect normalizedFrame = [self convertKeyboardFrame:frame toView:view];
+    return normalizedFrame.size.height;
+}
+
 + (instancetype)sharedInstance {
 	static RFKeyboard *sharedInstance = nil;
     static dispatch_once_t oncePredicate;
