@@ -90,7 +90,7 @@ typedef enum {
 
 - (void)exchangeDepthsWithView:(UIView *)swapView;
 
-- (UIView *)superviewOfClass:(Class)class;
+- (UIView *)superviewOfClass:(Class)viewClass;
 
 #pragma mark - Others
 /** A Boolean value that indicates whether the receiver is displayed.
