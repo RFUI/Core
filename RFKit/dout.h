@@ -2,7 +2,7 @@
 	Debug output kit(dout)
 	RFKit
 
-	ver 2.3
+	ver 2.4
  
     Copyright (c) 2012-2014 BB9z
     https://github.com/BB9z/RFKit
@@ -12,7 +12,7 @@
  */
 
 #ifndef _DOUT_H_
-#define _DOUT_H_ 2.3
+#define _DOUT_H_ 2.4
 
 #import "RFRuntime.h"
 
@@ -80,6 +80,7 @@
 
 #define doutwork()      dout(@"%s: It Works!", __FUNCTION__)
 #define douttrace()     dout(@"%s @%@", __PRETTY_FUNCTION__, [NSThread callStackSymbols])
+#define doutlastmethod()  dout(@"%s @%@", __PRETTY_FUNCTION__, ([[NSThread callStackSymbols] rf_objectAtIndex:1]))
 #define doutline()      dout(@"%s line:%d", __PRETTY_FUNCTION__, __LINE__)
 
 #pragma mark Log helper
@@ -183,6 +184,7 @@
 
 #define _doutwork(...)
 #define _douttrace(...)
+#define _doutlastmethod(...)
 #define _doutline(...)
 
 #define _dout_debug(...)
