@@ -1,6 +1,40 @@
 RFKit Change Log
 ================
 
+1.4
+-----
+* Hello 2014~
+* Remove deprecated methods:
+  - NSArray+RFKit, -firstObject
+  - NSBundle+RFKit, +versionString
+  - NSObject+RFKit, BlocksKit
+  - UIDevice+RFKit, +isPad, +isRetinaDisplay, +macAddress, +fileSystemFreeSize, +fileSystemSize
+  - UIViewController+RFKit, -setNavTitle:back:
+  
+* These methods will be removed:
+  - NSString+RFKit, `stringTrimToWidthLength:WithFont:`
+  - UIImage+RFKit, `imageByScalingAndCroppingForSize`
+  - UIDevice+RFKit, `macAddress`
+
+* API Changes:
+  - NSArray+RFKit, rename `addObjectsFromDictionary:keys:` to `addObjectsFromDictionary:addObjectsFromDictionary:`. Add `rf_objectAtIndex:`.
+  - NSDate+RFKit, add `rf_objectAtIndex` and `endTimeOfDate`.
+  - NSDictionary+RFKit, rename `copyObjectsFromDictionary:withKeys:` to `addEntriesFromDictionary:withSpecifiedKeys:`.
+  - UIDevice+RFKit, new macros to detect iOS version.
+  - NSFileManager+RFKit, add `fileSizeForPath:error:` and `sizeForDirectory:fileCount:directoryCount:error:`.
+  - NSString+RFKit, add `containsString:`, `containsString:options:` and `extractedHTMLContent`.
+  - UIImage+RFKit, add `imageWithTintColor:` and `imageOnlyKeepsAlphaWithTintColor:`.
+  - UIView+RFKit, add `superviewOfClass:` and `boundsInView:`.
+  
+* New UIResponder, UINavigationController category.
+* dout 2.4. New `doutlastmethod()`, `dout_debug()` and other minor changes.
+* RFARC, add `RF_GCD_STRONG` and `RF_GCD_WEAK` for dispatch object.
+* Change UIAlertView, UINavigationController and UIResponder category included by default.
+* Add `RFDefineConstString()` macro to define a const NSString.
+* Documents improvements.
+* Add an old version of NSObject+RACKVOWrapper from GitHub’s ReactiveCocoa.
+* Update EXTScope, EXTKeyPathCoding. Remove EXTSwizzle.
+
 1.3
 -----
 * Add some components from libextobjc (https://github.com/jspahrsummers/libextobjc). Includes: EXTKeyPathCoding, EXTScope, EXTSwizzle, metamacros.h. But EXTSwizzle is not included by default.

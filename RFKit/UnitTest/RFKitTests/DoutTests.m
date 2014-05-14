@@ -8,6 +8,7 @@
 
 #import "DoutTests.h"
 #import "dout.h"
+#import "RFKit.h"
 
 #define kPerformanceLoopTime 1000
 #define RFDebugLevel RFDebugLevelVerbose
@@ -62,9 +63,11 @@
     
     doutwork()
     douttrace()
+    doutlastmethod()
     doutline()
-    
-    dout_int(@"Info")
+
+    dout_debug(@"Debug")
+    dout_info(@"Info")
     dout_warning(@"W %@", str1)
     dout_error(@"E %d", a)
     
@@ -90,9 +93,11 @@
     
     _doutwork()
     _douttrace()
+    _doutlastmethod()
     _doutline()
-    
-    _dout_int(@"Info")
+
+    _dout_debug(@"Debug")
+    _dout_info(@"Info")
     _dout_warning(@"W %@", str1)
     _dout_error(@"E %d", a)
 }
@@ -103,8 +108,8 @@
 #define DoutLogString(string) string
 
 - (void)testOutputVerify {
-    STAssertEqualObjects(dout_int(999), @"999 = 999", @"Output verify");
-    STAssertEqualObjects(dout_rect(CGRectMake(1, 2, 3, 4)), @"CGRectMake(1, 2, 3, 4) = {{1, 2}, {3, 4}}", @"Output verify");
+    XCTAssertEqualObjects(dout_int(999), @"999 = 999", @"Output verify");
+    XCTAssertEqualObjects(dout_rect(CGRectMake(1, 2, 3, 4)), @"CGRectMake(1, 2, 3, 4) = {{1, 2}, {3, 4}}", @"Output verify");
 }
 
 
