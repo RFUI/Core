@@ -1,5 +1,4 @@
 
-#import "RFKit.h"
 #import "UIDevice+RFKit.h"
 #import <sys/socket.h>
 #import <sys/sysctl.h>
