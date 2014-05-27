@@ -89,14 +89,20 @@
 - (long long)fileSystemFreeSize {
     NSError *e = nil;
     NSDictionary *info = [[NSFileManager defaultManager] attributesOfFileSystemForPath:NSHomeDirectory() error:&e];
-    if (e) dout_warning(@"Can`t get file system free size, reason: %@", e);
+    if (e || !info[NSFileSystemFreeSize]) {
+        dout_warning(@"Can`t get file system free size, reason: %@", e);
+        return -1;
+    }
     return [info[NSFileSystemFreeSize] longLongValue];
 }
 
 - (long long)fileSystemSize {
     NSError *e = nil;
     NSDictionary *info = [[NSFileManager defaultManager] attributesOfFileSystemForPath:NSHomeDirectory() error:&e];
-    if (e) dout_warning(@"Can`t get file system size, reason: %@", e);
+    if (e || !info[NSFileSystemSize]) {
+        dout_warning(@"Can`t get file system size, reason: %@", e);
+        return -1;
+    }
     return [info[NSFileSystemSize] longLongValue];
 }
 
