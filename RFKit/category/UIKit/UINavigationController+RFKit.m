@@ -5,12 +5,7 @@
 @implementation UINavigationController (RFKit)
 
 - (Class)previousViewControllerClassForViewController:(UIViewController *)viewController {
-    NSUInteger idx = [self.viewControllers indexOfObject:viewController];
-    if (idx == 0 || idx == NSNotFound) {
-        return nil;
-    }
-
-    return [[self.viewControllers objectAtIndex:(idx - 1)] class];
+    return [[self previousViewControllerForViewController:viewController] class];
 }
 
 - (id)previousViewControllerForViewController:(UIViewController *)viewController {
