@@ -1,7 +1,7 @@
 /*!
     RFUI
  
-    Copyright (c) 2012-2013 BB9z
+    Copyright (c) 2012-2014 BB9z
     https://github.com/RFUI/Core
  
     The MIT License (MIT)
@@ -29,9 +29,21 @@ typedef struct {
 	float left;
 } RFEdge;
 
-typedef RFEdge RFMargin;
-typedef RFEdge RFBorder;
-typedef RFEdge RFPadding;
+DEPRECATED_ATTRIBUTE typedef RFEdge RFMargin;
+DEPRECATED_ATTRIBUTE typedef RFEdge RFBorder;
+DEPRECATED_ATTRIBUTE typedef RFEdge RFPadding;
+
+// Default is 10x.
+extern float RFUIDebugSlowAnimationsRatio;
+
+// UIViewAutoresizing enum extend
+extern NSUInteger const UIViewAutoresizingFlexibleSize;
+extern NSUInteger const UIViewAutoresizingFlexibleMargin;
+
+#pragma mark - DEPRECATED
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 
 bool RFEdgeEqualToEdge (RFEdge a, RFEdge b);
 CG_INLINE bool RFMarginEqualToMargin(RFMargin a, RFMargin b) {
@@ -81,18 +93,11 @@ CG_INLINE RFPadding RFPaddingMakeWithFloat (float edge) {
 
 CGRect RFPaddingInsetContentFrameForRect (CGRect boxFrame , RFPadding padding);
 
-
 extern const RFEdge    RFEdgeZero;
 extern const RFMargin  RFMarginZero;
 extern const RFBorder  RFBorderZero;
 extern const RFPadding RFPaddingZero;
 
+#pragma clang diagnostic pop
+
 #endif
-
-// Default is 10x.
-extern float RFUIDebugSlowAnimationsRatio;
-
-// UIViewAutoresizing enum extend
-extern NSUInteger const UIViewAutoresizingFlexibleSize;
-extern NSUInteger const UIViewAutoresizingFlexibleMargin;
-

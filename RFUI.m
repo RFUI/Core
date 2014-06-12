@@ -4,6 +4,9 @@
 float RFUIDebugSlowAnimationsRatio = 10;
 
 #pragma mark - RFEdge
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+
 bool RFEdgeEqualToEdge(RFEdge a, RFEdge b) {
 	if (a.top == b.top && a.right == b.right &&
 		a.bottom == b.bottom && a.left == b.left) {
@@ -41,6 +44,7 @@ const RFEdge    RFEdgeZero = {0,0,0,0};
 const RFMargin  RFMarginZero = {0,0,0,0};
 const RFBorder  RFBorderZero = {0,0,0,0};
 const RFPadding RFPaddingZero = {0,0,0,0};
+#pragma clang diagnostic pop
 
 #pragma mark - UIViewAutoresizing
 NSUInteger const UIViewAutoresizingFlexibleSize = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
