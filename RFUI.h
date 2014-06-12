@@ -36,6 +36,10 @@ DEPRECATED_ATTRIBUTE typedef RFEdge RFPadding;
 // Default is 10x.
 extern float RFUIDebugSlowAnimationsRatio;
 
+CG_INLINE UIEdgeInsets UIEdgeInsetsMakeWithSameMargin(CGFloat margin) {
+    return (UIEdgeInsets){ .top = margin, .left = margin, .bottom = margin, .right = margin };
+}
+
 // UIViewAutoresizing enum extend
 extern NSUInteger const UIViewAutoresizingFlexibleSize;
 extern NSUInteger const UIViewAutoresizingFlexibleMargin;
