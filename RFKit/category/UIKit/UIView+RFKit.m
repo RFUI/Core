@@ -194,7 +194,7 @@
 
 - (UIView *)superviewOfClass:(Class)viewClass {
     UIView *ctView = self.superview;
-    while (![ctView isKindOfClass:viewClass]) {
+    while (ctView && ![ctView isKindOfClass:viewClass]) {
         ctView = ctView.superview;
     }
     return ctView;
