@@ -2,7 +2,7 @@
     RFInitializing
     Stop writing init methods again and again.
 
-    Copyright (c) 2013 BB9z
+    Copyright (c) 2013-2014 BB9z
     https://github.com/RFUI/Core
 
     The MIT License (MIT)
@@ -125,15 +125,11 @@
     }
 #endif
 
+/// UIView’s init method will call initWithFrame:, so leave it empty.
 #ifndef RFInitializingRootForUIView
 #define RFInitializingRootForUIView \
     - (instancetype)init {\
-        self = [super init];\
-        if (self) {\
-            [self onInit];\
-            [self performSelector:@selector(afterInit) withObject:self afterDelay:0];\
-        }\
-        return self;\
+        return [super init];\
     }\
     - (instancetype)initWithFrame:(CGRect)frame {\
         self = [super initWithFrame:frame];\
