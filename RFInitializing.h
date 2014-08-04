@@ -128,9 +128,6 @@
 /// UIView’s init method will call initWithFrame:, so leave it empty.
 #ifndef RFInitializingRootForUIView
 #define RFInitializingRootForUIView \
-    - (instancetype)init {\
-        return [super init];\
-    }\
     - (instancetype)initWithFrame:(CGRect)frame {\
         self = [super initWithFrame:frame];\
         if (self) {\
@@ -147,5 +144,25 @@
         }\
         return self;\
     }
+#endif
 
+/// UIViewController’s init method will call initWithNibName:bundle:.
+#ifndef RFInitializingRootForUIViewController
+#define RFInitializingRootForUIViewController \
+    - (instancetype)initWithCoder:(NSCoder *)aDecoder {\
+        self = [super initWithCoder:aDecoder];\
+        if (self) {\
+            [self onInit];\
+            [self performSelector:@selector(afterInit) withObject:nil afterDelay:0];\
+        }\
+        return self;\
+    }\
+    - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {\
+        self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];\
+        if (self) {\
+            [self onInit];\
+            [self performSelector:@selector(afterInit) withObject:nil afterDelay:0];\
+        }\
+        return self;\
+    }
 #endif
