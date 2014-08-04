@@ -122,7 +122,7 @@
 }
 
 - (void)removeSubview:(UIView *)view {
-    if ([self.subviews indexOfObject:view]) {
+    if ([self.subviews indexOfObject:view] != NSNotFound) {
         [view removeFromSuperview];
     }
     else {
