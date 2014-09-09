@@ -33,4 +33,12 @@
  @param firstKey ... Keys specifying which object will be added to the reciver.
  */
 - (void)addObjectsFromDictionary:(NSDictionary *)sourceDictionary withSpecifiedKeys:(NSString *)firstKey, ...NS_REQUIRES_NIL_TERMINATION;
+
+/**
+ Replaces last object in the array. If the array is empty, the object will be added as first object.
+ 
+ @param anObject The object with which to replace the last object in the array. If this value is nil, takes no effect.
+ */
+- (void)setLastObject:(id)anObject;
+
 @end

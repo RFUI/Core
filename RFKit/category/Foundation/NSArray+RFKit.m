@@ -28,4 +28,10 @@
     va_end(ap);
 }
 
+- (void)setLastObject:(id)anObject {
+    if (anObject) {
+        self[MAX(0, self.count - 1)] = anObject;
+    }
+}
+
 @end
