@@ -30,7 +30,11 @@
 
 - (void)setLastObject:(id)anObject {
     if (anObject) {
-        self[MAX(0, self.count - 1)] = anObject;
+        NSInteger idx = self.count - 1;
+        if (idx < 0) {
+            idx = 0;
+        }
+        self[idx] = anObject;
     }
 }
 
