@@ -15,6 +15,35 @@
     return [self imageAspectFillSize:targetSize];
 }
 
+- (UIImage *)thumbnailImageWithMaxSize:(CGSize)targetSize {
+    CGFloat xSource = self.size.width;
+    CGFloat ySource = self.size.height;
+    CGFloat xTarget = targetSize.width;
+    CGFloat yTarget = targetSize.height;
+    NSParameterAssert(xTarget > 0 && yTarget > 0);
+    if (xSource <= xTarget && ySource <= yTarget) {
+        return RF_AUTORELEASE([self copy]);
+    }
+
+    CGRect tmpImageRect = CGRectMake(0, 0, xSource, ySource);
+
+    if (xSource/xTarget > ySource/yTarget) {
+        tmpImageRect.size.width = xTarget;
+        tmpImageRect.size.height = xTarget/xSource*ySource;
+    }
+    else {
+        tmpImageRect.size.height = yTarget;
+        tmpImageRect.size.width = yTarget/ySource*xSource;
+    }
+
+    UIGraphicsBeginImageContext(tmpImageRect.size);
+    [self drawInRect:tmpImageRect];
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    if (!newImage) dout_error(@"Resize Image Faile");
+    UIGraphicsEndImageContext();
+    return newImage;
+}
+
 //!ref: http://stackoverflow.com/a/605385/945906
 - (UIImage *)imageAspectFillSize:(CGSize)targetSize{
 	if (CGSizeEqualToSize(self.size, targetSize)) {

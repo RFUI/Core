@@ -15,6 +15,11 @@
 + (UIImage *)resourceName:(NSString *)PNGFileName;
 + (UIImage *)resourceName:(NSString *)fileName ofType:(NSString *)type;
 
+/**
+ Creat a thumbnail image which it’s width and height not larger than the specified size.
+ */
+- (UIImage *)thumbnailImageWithMaxSize:(CGSize)targetSize;
+
 // Aspect scale, may crop image
 - (UIImage *)imageAspectFillSize:(CGSize)targetSize;
 
@@ -28,7 +33,7 @@
 - (UIImage *)imageWithScaledSize:(CGSize)newSize;
 
 // Scale image, keep the aspect ratio
-- (UIImage*)imageWithScale:(CGFloat)scale;
+- (UIImage *)imageWithScale:(CGFloat)scale;
 
 - (UIImage *)imageByScalingAndCroppingForSize:(CGSize)targetSize DEPRECATED_ATTRIBUTE;
 
