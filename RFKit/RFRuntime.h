@@ -63,6 +63,7 @@ enum {
 #import "EXTKeyPathCoding.h"
 #import "EXTScope.h"
 #import "NSObject+RACKVOWrapper.h"
+#import "FBKVOController.h"
 
 /**
  \@keypathClassInstance allows compile-time verification of key paths. Similar to
