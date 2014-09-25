@@ -113,7 +113,7 @@
 			break;
 			
 		case RFViewResizeOptionCenter:
-			view.center = self.center;
+			view.center = CGPointOfRectCenter(self.bounds);
 			break;
             
         case RFViewResizeOptionNone:
