@@ -19,7 +19,7 @@
 
 + (id)JSONObjectWithString:(NSString *)string {
     NSError *e = nil;
-    id obj = [NSJSONSerialization JSONObjectWithString:string usingEncoding:NSUTF8StringEncoding allowLossyConversion:YES options:0 error:&e];
+    id obj = [NSJSONSerialization JSONObjectWithString:string usingEncoding:NSUTF8StringEncoding allowLossyConversion:YES options:(NSJSONReadingOptions)0 error:&e];
     if (e) dout_error(@"%@", e);
     return obj;
 }
