@@ -34,4 +34,10 @@
 
 // experimental
 + (void)setEnableAutoDisimssKeyboardWhenTouch:(BOOL)enabled;
+
++ (instancetype)defaultManager;
+
+/// Experimental, only called when AutoDisimssKeyboardWhenTouch
+@property (copy, nonatomic) void (^keyboardShowCallback)(NSNotification *note);
+@property (copy, nonatomic) void (^keyboardHideCallback)(NSNotification *note);
 @end

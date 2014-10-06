@@ -49,7 +49,7 @@
     return normalizedFrame.size.height;
 }
 
-+ (instancetype)sharedInstance {
++ (instancetype)defaultManager {
 	static RFKeyboard *sharedInstance = nil;
     static dispatch_once_t oncePredicate;
     dispatch_once(&oncePredicate, ^{
@@ -61,7 +61,7 @@
 #pragma mark - experimental below
 
 + (void)setEnableAutoDisimssKeyboardWhenTouch:(BOOL)enabled {
-    [[RFKeyboard sharedInstance] setEnableAutoDisimssKeyboardWhenTouch:enabled];
+    [[RFKeyboard defaultManager] setEnableAutoDisimssKeyboardWhenTouch:enabled];
 }
 
 - (void)setEnableAutoDisimssKeyboardWhenTouch:(BOOL)enabled {
@@ -83,11 +83,19 @@
                     self.tapInWindowGestureRecognizer.enabled = YES;
                     self.panInWindowGestureRecognizer.enabled = YES;
                     [self tryAddGestureRecognizerToKeyWindow];
+
+                    if (self.keyboardShowCallback) {
+                        self.keyboardShowCallback(note);
+                    }
                 }];
                 self.keyboardHideObserver = [[NSNotificationCenter defaultCenter] addObserverForName:UIKeyboardWillHideNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
                     @strongify(self);
                     self.tapInWindowGestureRecognizer.enabled = NO;
                     self.panInWindowGestureRecognizer.enabled = NO;
+
+                    if (self.keyboardHideCallback) {
+                        self.keyboardHideCallback(note);
+                    }
                 }];
             }
         }
