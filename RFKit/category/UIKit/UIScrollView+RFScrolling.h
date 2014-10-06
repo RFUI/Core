@@ -19,4 +19,11 @@
  */
 - (void)scrollToTopAnimated:(BOOL)animated;
 
+/**
+ Make the receiver scroll to the bottom.
+
+ @param animated `YES` if the scrolling should be animated, `NO` if it should be immediate.
+ */
+- (void)scrollToBottomAnimated:(BOOL)animated;
+
 @end
