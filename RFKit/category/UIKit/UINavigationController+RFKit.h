@@ -32,4 +32,9 @@
  */
 - (BOOL)hasViewControllerWithClass:(Class)aClass beforeViewController:(UIViewController *)viewController;
 
+/**
+ Return a view controller which is kind of the specified class in the navigation stack before a view controller.
+ */
+- (id)viewControllerWithClass:(Class)aClass beforeViewController:(UIViewController *)viewController;
+
 @end
