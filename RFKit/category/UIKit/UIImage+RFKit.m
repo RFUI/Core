@@ -45,7 +45,7 @@
 }
 
 //!ref: http://stackoverflow.com/a/605385/945906
-- (UIImage *)imageAspectFillSize:(CGSize)targetSize{
+- (UIImage *)imageAspectFillSize:(CGSize)targetSize opaque:(BOOL)opaque scale:(CGFloat)scale {
 	if (CGSizeEqualToSize(self.size, targetSize)) {
 		return RF_AUTORELEASE([self copy]);
 	}
@@ -72,7 +72,7 @@
 		tmpImageRect.origin.y = (yTarget - tmpImageRect.size.height)/2;
 	}
 	
-	UIGraphicsBeginImageContext(targetSize);
+    UIGraphicsBeginImageContextWithOptions(targetSize, opaque, scale);
 	[self drawInRect:tmpImageRect];
 	UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
 	if (!newImage) dout_error(@"Resize Image Faile");
@@ -80,7 +80,11 @@
 	return newImage;
 }
 
-- (UIImage *)imageAspectFitSize:(CGSize)targetSize {
+- (UIImage *)imageAspectFillSize:(CGSize)targetSize {
+    return [self imageAspectFillSize:targetSize opaque:NO scale:1.0];
+}
+
+- (UIImage *)imageAspectFitSize:(CGSize)targetSize opaque:(BOOL)opaque scale:(CGFloat)scale {
     if (CGSizeEqualToSize(self.size, targetSize)) {
 		return RF_AUTORELEASE([self copy]);
 	}
@@ -107,12 +111,16 @@
         tmpImageRect.origin.x = (xTarget -tmpImageRect.size.width)/2;
 	}
 	
-	UIGraphicsBeginImageContext(targetSize);
+    UIGraphicsBeginImageContextWithOptions(targetSize, opaque, scale);
 	[self drawInRect:tmpImageRect];
 	UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
 	if (!newImage) dout_error(@"Resize Image Faile");
 	UIGraphicsEndImageContext();
 	return newImage;
+}
+
+- (UIImage *)imageAspectFitSize:(CGSize)targetSize {
+    return [self imageAspectFitSize:targetSize opaque:NO scale:1.0];
 }
 
 //!ref: http://stackoverflow.com/a/7704399/945906 
