@@ -48,6 +48,12 @@ enum {
 #   endif
 #endif
 
+#pragma mark - Xcode
+
+/// For Xcode below 6.0
+#ifndef IBInspectable
+    #define IBInspectable
+#endif
 
 #pragma mark - Headers
 #import <Foundation/Foundation.h>
