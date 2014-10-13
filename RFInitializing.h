@@ -125,6 +125,26 @@
     }
 #endif
 
+#ifndef RFInitializingRootForNSObjectSupportNSCoding
+#define RFInitializingRootForNSObjectSupportNSCoding \
+    - (instancetype)init {\
+        self = [super init];\
+        if (self) {\
+            [self onInit];\
+            [self performSelector:@selector(afterInit) withObject:self afterDelay:0];\
+        }\
+        return self;\
+    }\
+    - (instancetype)initWithCoder:(NSCoder *)aDecoder {\
+        self = [super initWithCoder:aDecoder];\
+        if (self) {\
+            [self onInit];\
+            [self performSelector:@selector(afterInit) withObject:self afterDelay:0];\
+        }\
+        return self;\
+    }
+#endif
+
 /// UIView’s init method will call initWithFrame:, so leave it empty.
 #ifndef RFInitializingRootForUIView
 #define RFInitializingRootForUIView \
