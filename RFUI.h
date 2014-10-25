@@ -36,8 +36,18 @@ DEPRECATED_ATTRIBUTE typedef RFEdge RFPadding;
 // Default is 10x.
 extern float RFUIDebugSlowAnimationsRatio;
 
+/**
+ Creates an edge inset.
+ */
 CG_INLINE UIEdgeInsets UIEdgeInsetsMakeWithSameMargin(CGFloat margin) {
     return (UIEdgeInsets){ .top = margin, .left = margin, .bottom = margin, .right = margin };
+}
+
+/**
+ Creats an reverse inset.
+ */
+CG_INLINE UIEdgeInsets UIEdgeInsetsReverse(UIEdgeInsets insets) {
+    return (UIEdgeInsets){ .top = -insets.top, .left = -insets.left, .bottom = -insets.bottom, .right = -insets.right };
 }
 
 // UIViewAutoresizing enum extend
