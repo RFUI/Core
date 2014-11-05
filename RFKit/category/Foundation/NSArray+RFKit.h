@@ -14,7 +14,7 @@
 @interface NSArray (RFKit)
 
 /**
- Returns the object located at the specified index.
+ Returns the object located at the specified index safely.
  
  If index is beyond the end of the array, nil will be returned.
 
@@ -26,6 +26,22 @@
 @end
 
 @interface NSMutableArray (RFKit)
+
+/**
+ Inserts a given object at the end of the array safely.
+ 
+ @param anObject The object to add to the end of the array's content. This value can be `nil`.
+ */
+- (void)rf_addObject:(id)anObject;
+
+/**
+ Inserts a given object into the array's contents at a given index safely.
+
+ @param anObject The object to add to the array's content. This value can be `nil`.
+ @param The index in the array at which to insert anObject. If index is beyond the end of the array, nothing hanppaned.
+ */
+- (void)rf_insertObject:(id)anObject atIndex:(NSUInteger)index;
+
 
 /** Filter a given dictionary with specified keys and adds these objects to the end of the receiving array’s content.
 
