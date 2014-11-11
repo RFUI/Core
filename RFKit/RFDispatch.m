@@ -14,3 +14,8 @@ void dispatch_sync_on_main(dispatch_block_t block) {
         dispatch_sync(dispatch_get_main_queue(), block);
     }
 }
+
+void dispatch_async_on_background(dispatch_block_t block) {
+    dispatch_queue_t background_queue = dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0);
+    dispatch_async(background_queue, block);
+}
