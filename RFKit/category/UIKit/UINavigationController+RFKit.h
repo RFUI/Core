@@ -28,12 +28,16 @@
 
 /** Return whether there is a given kind of view controller in the navigation stack before a view controller.
  
+ @param viewController If you specify `nil`, this method searchs all view controllers on the navigation stack reversely.
+
  @return Returns `YES` if there are any view controllers which is kind of given class before the specified view controller; otherwise, `NO`.
  */
 - (BOOL)hasViewControllerWithClass:(Class)aClass beforeViewController:(UIViewController *)viewController;
 
 /**
  Return a view controller which is kind of the specified class in the navigation stack before a view controller.
+ 
+ @param viewController If you specify `nil`, this method searchs all view controllers on the navigation stack reversely.
  */
 - (id)viewControllerWithClass:(Class)aClass beforeViewController:(UIViewController *)viewController;
 

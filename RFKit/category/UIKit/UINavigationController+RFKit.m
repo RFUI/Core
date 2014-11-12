@@ -16,22 +16,18 @@
 }
 
 - (BOOL)hasViewControllerWithClass:(Class)aClass beforeViewController:(UIViewController *)viewController {
-    NSUInteger idx = [self.viewControllers indexOfObject:viewController];
-    if (idx == 0 || idx == NSNotFound) {
-        return NO;
-    }
-
-    NSArray *vcs = self.viewControllers;
-    for (NSInteger i = (idx - 1); i >= 0; i--) {
-        if ([vcs[i] isKindOfClass:aClass]) {
-            return YES;
-        }
-    }
-    return NO;
+    return !!([self viewControllerWithClass:aClass beforeViewController:viewController]);
 }
 
 - (id)viewControllerWithClass:(Class)aClass beforeViewController:(UIViewController *)viewController {
-    NSUInteger idx = [self.viewControllers indexOfObject:viewController];
+    NSUInteger idx = NSNotFound;
+    if (viewController) {
+        idx = [self.viewControllers indexOfObject:viewController];
+    }
+    else {
+        idx = self.viewControllers.count;
+    }
+
     if (idx == 0 || idx == NSNotFound) {
         return nil;
     }
