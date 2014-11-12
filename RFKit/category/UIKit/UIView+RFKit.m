@@ -222,7 +222,7 @@
 	[self.superview exchangeSubviewAtIndex:[self siblingIndex] withSubviewAtIndex:[swapView siblingIndex]];
 }
 
-- (UIView *)superviewOfClass:(Class)viewClass {
+- (id)superviewOfClass:(Class)viewClass {
     UIView *ctView = self.superview;
     while (ctView && ![ctView isKindOfClass:viewClass]) {
         ctView = ctView.superview;
