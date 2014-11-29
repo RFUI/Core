@@ -17,10 +17,10 @@
 #import "RFUIInterfaceOrientationSupport.h"
 #import "RFKeyboard.h"
 
-typedef enum {
+typedef NS_ENUM(NSInteger, RFUIOrientation) {
     RFUIOrientationVertical = 0,
 	RFUIOrientationHorizontal,
-} RFUIOrientation;
+} ;
 
 typedef struct {
 	float top;

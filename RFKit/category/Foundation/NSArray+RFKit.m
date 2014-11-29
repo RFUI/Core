@@ -9,7 +9,7 @@
         return nil;
     }
 
-    return [self objectAtIndex:index];
+    return self[index];
 }
 
 @end
@@ -32,7 +32,7 @@
     va_list ap;
     va_start(ap, firstKey);
     for (NSString *key = firstKey; key != nil; key = va_arg(ap, id)) {
-        id tmp = [sourceDictionary objectForKey:key];
+        id tmp = sourceDictionary[key];
         if (tmp) {
             [self addObject:tmp];
         }
