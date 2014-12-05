@@ -14,6 +14,7 @@
         if (self.secondItem) {
             [self.secondItem layoutIfNeeded];
         }
+        return;
     }
 
     UIView *comment = [UIView commonSuperviewWith:self.firstItem anotherView:self.secondItem];
