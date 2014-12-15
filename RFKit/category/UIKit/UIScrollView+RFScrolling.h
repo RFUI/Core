@@ -27,3 +27,14 @@
 - (void)scrollToBottomAnimated:(BOOL)animated;
 
 @end
+
+@interface UITableView (RFScrolling)
+
+/**
+ Make the receiver scrolls the last row of interest to the bottom of the visible table view.
+
+ @param animated `YES` if the scrolling should be animated, `NO` if it should be immediate.
+ */
+- (void)scrollToLastRowAnimated:(BOOL)animated;
+
+@end

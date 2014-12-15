@@ -18,3 +18,16 @@
 }
 
 @end
+
+@implementation UITableView (RFScrolling)
+
+- (void)scrollToLastRowAnimated:(BOOL)animated {
+    NSInteger section = [self numberOfSections] - 1;
+    if (section < 0) return;
+    NSInteger row = [self numberOfRowsInSection:section] - 1;
+    if (row < 0) return;
+
+    [self scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+}
+
+@end
