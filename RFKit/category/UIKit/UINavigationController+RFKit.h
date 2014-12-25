@@ -13,6 +13,9 @@
 
 @interface UINavigationController (RFKit)
 
+@property(readonly) UIViewController *disappearingViewController NS_AVAILABLE_IOS(2_0);
+@property(readonly) UIViewController *previousViewController NS_AVAILABLE_IOS(2_0);
+
 /** Get the previous view controller’s class of the specified view controller in the navigation stack.
  
  @return Returns the previous view controller’s class of the specified view controller.
