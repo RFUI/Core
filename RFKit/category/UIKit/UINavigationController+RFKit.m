@@ -3,6 +3,8 @@
 #import "NSArray+RFKit.h"
 
 @implementation UINavigationController (RFKit)
+@dynamic disappearingViewController;
+@dynamic previousViewController;
 
 - (Class)previousViewControllerClassForViewController:(UIViewController *)viewController {
     return [[self previousViewControllerForViewController:viewController] class];
