@@ -43,4 +43,10 @@
     return nil;
 }
 
+- (void)setTopViewController:(UIViewController *)topViewController animated:(BOOL)animated {
+    NSMutableArray *vcs = [self.viewControllers mutableCopy];
+    vcs.lastObject = topViewController;
+    [self setViewControllers:vcs animated:animated];
+}
+
 @end
