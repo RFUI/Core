@@ -5,15 +5,14 @@
 @implementation NSJSONSerialization (RFKit)
 
 + (NSString *)stringWithJSONObject:(id)obj options:(NSJSONWritingOptions)opt error:(NSError *__autoreleasing *)error {
+    if (!obj) return nil;
     NSData *d = [NSJSONSerialization dataWithJSONObject:obj options:opt error:error];
     return RF_AUTORELEASE([[NSString alloc] initWithData:d encoding:NSUTF8StringEncoding]);
 }
 
 + (id)JSONObjectWithString:(NSString *)string usingEncoding:(NSStringEncoding)encoding allowLossyConversion:(BOOL)lossy options:(NSJSONReadingOptions)opt error:(NSError *__autoreleasing *)error {
     NSData *d = [string dataUsingEncoding:encoding allowLossyConversion:lossy];
-    if (!d) {
-        return nil;
-    }
+    if (!d) return nil;
     return [NSJSONSerialization JSONObjectWithData:d options:opt error:error];
 }
 
