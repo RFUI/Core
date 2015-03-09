@@ -68,7 +68,6 @@ enum {
 #import "metamacros.h"
 #import "EXTKeyPathCoding.h"
 #import "EXTScope.h"
-#import "NSObject+RACKVOWrapper.h"
 #import "FBKVOController.h"
 
 /**
