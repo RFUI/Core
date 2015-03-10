@@ -1,0 +1,3 @@
+[submodule "RFKit"]
+	path = RFKit
+	url = https://github.com/BB9z/RFKit.git
