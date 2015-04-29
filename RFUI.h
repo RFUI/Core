@@ -8,8 +8,7 @@
     http://www.opensource.org/licenses/mit-license.php
  */
 
-#ifndef _RFUI_h
-#define _RFUI_h
+#pragma once
 
 #import "RFKit.h"
 #import "RFUIDebug.h"
@@ -113,5 +112,3 @@ extern const RFBorder  RFBorderZero;
 extern const RFPadding RFPaddingZero;
 
 #pragma clang diagnostic pop
-
-#endif
