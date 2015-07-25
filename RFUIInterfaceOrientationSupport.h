@@ -2,15 +2,21 @@
     RFUIInterfaceOrientationSupport
     RFUI
 
-    Copyright (c) 2012-2013 BB9z
+    Copyright (c) 2012-2013, 2015 BB9z
     https://github.com/RFUI/Core
 
     The MIT License (MIT)
     http://www.opensource.org/licenses/mit-license.php
  */
+#import <UIKit/UIKit.h>
 
 #ifndef _RFUIInterfaceOrientationSupport_
 #define _RFUIInterfaceOrientationSupport_
+
+// For iOS 9 SDK below
+#ifndef __IPHONE_9_0
+#define UIInterfaceOrientationMask NSUInteger
+#endif
 
 // Tools
 #define _RFUIInterfaceOrientationSupport_ShouldAutorotate \
@@ -19,7 +25,7 @@
 }
 
 #define _RFUIInterfaceOrientationSupport_SupportedInterfaceOrientations(iPhoneOption, iPadOption) \
-- (NSUInteger)supportedInterfaceOrientations {\
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {\
     if ([UIDevice currentDevice].isPad) {\
         return iPadOption;\
     }\
@@ -29,7 +35,7 @@
 }
 
 #define _RFUIInterfaceOrientationSupport_SupportedInterfaceOrientationsBoth(Option) \
-- (NSUInteger)supportedInterfaceOrientations {\
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {\
     return Option;\
 }
 
@@ -98,7 +104,7 @@
         return [self.topViewController shouldAutorotate];\
     }\
     \
-    - (NSUInteger)supportedInterfaceOrientations {\
+    - (UIInterfaceOrientationMask)supportedInterfaceOrientations {\
         return [self.topViewController supportedInterfaceOrientations];\
     }
 
