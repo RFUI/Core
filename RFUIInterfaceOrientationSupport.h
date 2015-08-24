@@ -10,8 +10,8 @@
  */
 #import <UIKit/UIKit.h>
 
-#ifndef _RFUIInterfaceOrientationSupport_
-#define _RFUIInterfaceOrientationSupport_
+#ifndef RFUIInterfaceOrientationSupport_H
+#define RFUIInterfaceOrientationSupport_H
 
 // For iOS 9 SDK below
 #ifndef __IPHONE_9_0
@@ -19,12 +19,12 @@
 #endif
 
 // Tools
-#define _RFUIInterfaceOrientationSupport_ShouldAutorotate \
+#define _rf_UIInterfaceOrientationSupport_ShouldAutorotate_ \
 - (BOOL)shouldAutorotate {\
     return YES;\
 }
 
-#define _RFUIInterfaceOrientationSupport_SupportedInterfaceOrientations(iPhoneOption, iPadOption) \
+#define _rf_UIInterfaceOrientationSupport_SupportedInterfaceOrientations_(iPhoneOption, iPadOption) \
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations {\
     if ([UIDevice currentDevice].isPad) {\
         return iPadOption;\
@@ -34,7 +34,7 @@
     }\
 }
 
-#define _RFUIInterfaceOrientationSupport_SupportedInterfaceOrientationsBoth(Option) \
+#define _rf_UIInterfaceOrientationSupport_SupportedInterfaceOrientations_Both(Option) \
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations {\
     return Option;\
 }
@@ -45,8 +45,8 @@
 // iPhone Only Portrait, no upside down
 // iPad All
 #define RFUIInterfaceOrientationSupportDefault \
-    _RFUIInterfaceOrientationSupport_ShouldAutorotate\
-    _RFUIInterfaceOrientationSupport_SupportedInterfaceOrientations(UIInterfaceOrientationMaskPortrait, UIInterfaceOrientationMaskAll)\
+    _rf_UIInterfaceOrientationSupport_ShouldAutorotate_\
+    _rf_UIInterfaceOrientationSupport_SupportedInterfaceOrientations_(UIInterfaceOrientationMaskPortrait, UIInterfaceOrientationMaskAll)\
     \
     - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {\
         if ([UIDevice currentDevice].isPad) {\
@@ -60,8 +60,8 @@
 // iPhone Only Portrait, no upside down
 // iPad Portrait + PortraitUpsideDown
 #define RFUIInterfaceOrientationSupportPortrait \
-    _RFUIInterfaceOrientationSupport_ShouldAutorotate\
-    _RFUIInterfaceOrientationSupport_SupportedInterfaceOrientations(UIInterfaceOrientationMaskPortrait, (UIInterfaceOrientationMaskPortrait|UIInterfaceOrientationMaskPortraitUpsideDown))\
+    _rf_UIInterfaceOrientationSupport_ShouldAutorotate_\
+    _rf_UIInterfaceOrientationSupport_SupportedInterfaceOrientations_(UIInterfaceOrientationMaskPortrait, (UIInterfaceOrientationMaskPortrait|UIInterfaceOrientationMaskPortraitUpsideDown))\
     \
     - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {\
         if ([UIDevice currentDevice].isPad) {\
@@ -74,8 +74,8 @@
 
 // iPhone & iPad Only Landscape (Left+Right)
 #define RFUIInterfaceOrientationSupportLandscape \
-    _RFUIInterfaceOrientationSupport_ShouldAutorotate\
-    _RFUIInterfaceOrientationSupport_SupportedInterfaceOrientationsBoth(UIInterfaceOrientationMaskLandscape)\
+    _rf_UIInterfaceOrientationSupport_ShouldAutorotate_\
+    _rf_UIInterfaceOrientationSupport_SupportedInterfaceOrientations_Both(UIInterfaceOrientationMaskLandscape)\
     \
     - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {\
         return UIInterfaceOrientationIsLandscape(toInterfaceOrientation);\
@@ -83,8 +83,8 @@
 
 // All, except PortraitUpsideDown on iPhone
 #define RFUIInterfaceOrientationSupportAll \
-    _RFUIInterfaceOrientationSupport_ShouldAutorotate\
-    _RFUIInterfaceOrientationSupport_SupportedInterfaceOrientations(UIInterfaceOrientationMaskAllButUpsideDown, UIInterfaceOrientationMaskAll)\
+    _rf_UIInterfaceOrientationSupport_ShouldAutorotate_\
+    _rf_UIInterfaceOrientationSupport_SupportedInterfaceOrientations_(UIInterfaceOrientationMaskAllButUpsideDown, UIInterfaceOrientationMaskAll)\
     \
     - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {\
         if ([UIDevice currentDevice].isPad) {\
@@ -111,6 +111,9 @@
 
 #pragma mark -
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wreserved-id-macro"
+
 // For disable
 #define _RFUIInterfaceOrientationSupportDefault
 #define _RFUIInterfaceOrientationSupportPortrait
@@ -118,5 +121,7 @@
 #define _RFUIInterfaceOrientationSupportAll
 
 #define _RFUIInterfaceOrientationSupportNavigation
+
+#pragma clang diagnostic pop
 
 #endif
