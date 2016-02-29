@@ -28,10 +28,6 @@ typedef struct {
 	float left;
 } RFEdge;
 
-DEPRECATED_ATTRIBUTE typedef RFEdge RFMargin;
-DEPRECATED_ATTRIBUTE typedef RFEdge RFBorder;
-DEPRECATED_ATTRIBUTE typedef RFEdge RFPadding;
-
 // Default is 10x.
 extern float RFUIDebugSlowAnimationsRatio;
 
@@ -55,60 +51,12 @@ extern NSUInteger const UIViewAutoresizingFlexibleMargin;
 
 #pragma mark - DEPRECATED
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-
 bool RFEdgeEqualToEdge (RFEdge a, RFEdge b);
-CG_INLINE bool RFMarginEqualToMargin(RFMargin a, RFMargin b) {
-	return RFEdgeEqualToEdge(a, b);
-}
-CG_INLINE bool RFPaddingEqualToPadding (RFBorder a, RFBorder b) {
-	return RFEdgeEqualToEdge(a, b);
-}
-CG_INLINE bool RFBorderEqualToBorder (RFPadding a, RFPadding b) {
-	return RFEdgeEqualToEdge(a, b);
-}
-
 RFEdge RFEdgeMake (float top, float right, float bottom, float left);
-CG_INLINE RFMargin RFMarginMake (float top, float right, float bottom, float left) {
-	return RFEdgeMake(top, right, bottom, left);
-}
-CG_INLINE RFBorder RFBorderMake (float top, float right, float bottom, float left) {
-	return RFEdgeMake(top, right, bottom, left);
-}
-CG_INLINE RFPadding RFPaddingMake (float top, float right, float bottom, float left) {
-	return RFEdgeMake(top, right, bottom, left);
-}
-
 RFEdge RFEdgeMakeWithRects (CGRect outterRect, CGRect innerRect);
-CG_INLINE RFMargin RFMarginMakeWithRects (CGRect outterRect, CGRect innerRect) {
-    return RFEdgeMakeWithRects(outterRect, innerRect);
-}
-CG_INLINE RFBorder RFBorderMakeWithRects (CGRect outterRect, CGRect innerRect) {
-    return RFEdgeMakeWithRects(outterRect, innerRect);
-}
-CG_INLINE RFPadding RFPaddingMakeWithRects (CGRect outterRect, CGRect innerRect) {
-    return RFEdgeMakeWithRects(outterRect, innerRect);
-}
 
 CG_INLINE RFEdge RFEdgeMakeWithFloat (float edge) {
 	return RFEdgeMake(edge, edge, edge, edge);
 }
-CG_INLINE RFMargin RFMarginMakeWithFloat (float edge) {
-	return RFEdgeMake(edge, edge, edge, edge);
-}
-CG_INLINE RFBorder RFBorderMakeWithFloat (float edge) {
-	return RFEdgeMake(edge, edge, edge, edge);
-}
-CG_INLINE RFPadding RFPaddingMakeWithFloat (float edge) {
-	return RFEdgeMake(edge, edge, edge, edge);
-}
 
-CGRect RFPaddingInsetContentFrameForRect (CGRect boxFrame , RFPadding padding);
-
-extern const RFEdge    RFEdgeZero;
-extern const RFMargin  RFMarginZero;
-extern const RFBorder  RFBorderZero;
-extern const RFPadding RFPaddingZero;
-
-#pragma clang diagnostic pop
+extern const RFEdge RFEdgeZero;
