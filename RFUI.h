@@ -11,9 +11,12 @@
 #pragma once
 
 #import "RFKit.h"
+#import "RFUIInterfaceOrientationSupport.h"
+
+#if !TARGET_OS_WATCH
+
 #import "RFUIDebug.h"
 #import "RFInitializing.h"
-#import "RFUIInterfaceOrientationSupport.h"
 #import "RFKeyboard.h"
 
 typedef NS_ENUM(NSInteger, RFUIOrientation) {
@@ -60,3 +63,5 @@ CG_INLINE RFEdge RFEdgeMakeWithFloat (float edge) {
 }
 
 extern const RFEdge RFEdgeZero;
+
+#endif
