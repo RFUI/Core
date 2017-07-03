@@ -1,7 +1,7 @@
 /*!
     RFUI
  
-    Copyright (c) 2012-2014 BB9z
+    Copyright (c) 2012-2014, 2017 BB9z
     https://github.com/RFUI/Core
  
     The MIT License (MIT)
@@ -11,13 +11,13 @@
 #pragma once
 
 #import "RFKit.h"
-#import "RFUIInterfaceOrientationSupport.h"
-
-#if !TARGET_OS_WATCH
-
-#import "RFUIDebug.h"
 #import "RFInitializing.h"
+
+#if TARGET_OS_IOS
+#import "RFUIInterfaceOrientationSupport.h"
+#import "RFUIDebug.h"
 #import "RFKeyboard.h"
+#endif
 
 typedef NS_ENUM(NSInteger, RFUIOrientation) {
     RFUIOrientationVertical = 0,
@@ -34,6 +34,7 @@ typedef struct {
 // Default is 10x.
 extern float RFUIDebugSlowAnimationsRatio;
 
+#if TARGET_OS_IOS
 /**
  Creates an edge inset.
  */
@@ -51,6 +52,7 @@ CG_INLINE UIEdgeInsets UIEdgeInsetsReverse(UIEdgeInsets insets) {
 // UIViewAutoresizing enum extend
 extern NSUInteger const UIViewAutoresizingFlexibleSize;
 extern NSUInteger const UIViewAutoresizingFlexibleMargin;
+#endif
 
 #pragma mark - DEPRECATED
 
@@ -63,5 +65,3 @@ CG_INLINE RFEdge RFEdgeMakeWithFloat (float edge) {
 }
 
 extern const RFEdge RFEdgeZero;
-
-#endif

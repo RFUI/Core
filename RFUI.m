@@ -32,5 +32,7 @@ RFEdge RFEdgeMakeWithRects(CGRect outterRect, CGRect innerRect) {
 const RFEdge    RFEdgeZero = {0,0,0,0};
 
 #pragma mark - UIViewAutoresizing
+#if TARGET_OS_IOS
 NSUInteger const UIViewAutoresizingFlexibleSize = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 NSUInteger const UIViewAutoresizingFlexibleMargin = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin;
+#endif
