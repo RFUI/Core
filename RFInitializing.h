@@ -2,7 +2,7 @@
     RFInitializing
     Stop writing init methods again and again.
 
-    Copyright (c) 2013-2014 BB9z
+    Copyright (c) 2013-2014, 2018 BB9z
     https://github.com/RFUI/Core
 
     The MIT License (MIT)
@@ -12,8 +12,7 @@
 #import <Foundation/Foundation.h>
 
 /**
- Purpose
- ----
+ ## Purpose
  
  It´s boring to write the init method again and again, especially there are
  many init mehods to overwrite. For example, if you want subclass UIView,
@@ -49,8 +48,7 @@
  @endcode
  
  
- Usage
- ----
+ ## Usage
 
  You should only call `onInit` and `afterInit` in root object which conforms
  to this protocol. And `afterInit` must be delayed. Here is a example:
@@ -99,17 +97,14 @@
  @endcode
  
  
- More
- ----
+ ## More
  
  You can find more example at https://github.com/RFUI . eg RFCheckbox.
- 
  */
 
-@protocol RFInitializing <NSObject>
+@protocol RFInitializing
 @required
 - (void)onInit;
-
 - (void)afterInit;
 @end
 
