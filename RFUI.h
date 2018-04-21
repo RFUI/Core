@@ -10,7 +10,7 @@
 
 #pragma once
 
-#import "RFKit.h"
+#import <RFKit/RFKit.h>
 
 #if TARGET_OS_IOS
 #import "RFUIInterfaceOrientationSupport.h"
